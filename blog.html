@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/blog-style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    
+    <title>Rent a Car - Blog</title>
+</head>
+<body>
+
+    <div class="header blog-mode">
+        <div class="navbar">
+            <div class="logo">
+                <a href="index.html">Rent a Car <span>.</span></a>
+            </div>
+            
+            <div class="hamburger" onclick="toggleMenu()">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+
+            <div class="menu" id="navMenu">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="cars.html">Cars</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="review.html">Reviews</a></li>
+                    <li><a href="blog.html" class="active">Blogs</a></li>
+                    <li><a href="login.html">Login</a></li>
+                </ul>
+            </div>
+            
+            <div class="socialmedia">
+                <ul>
+                    <li><a href="https://www.facebook.com/WebDevByMahad/" target="_blank"><i class="fa-brands fa-facebook-f"></i></a></li>
+                    <li><a href="https://www.instagram.com/webdevbymahad/" target="_blank"><i class="fa-brands fa-instagram"></i></a></li>
+                    <li><a href="https://wa.me/923206806396" target="_blank"><i class="fa-brands fa-whatsapp"></i></a></li>
+                    <li style="display: flex; align-items: center; margin-left: 10px;">
+                        <label class="switch">
+                            <input type="checkbox" onclick="togglePinkMode()">
+                            <span class="slider round"></span>
+                        </label>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <section class="featured-hero">
+        <div class="hero-bg">
+            <img src="assets/f2.png" alt="Featured Car">
+            <div class="overlay-gradient"></div>
+        </div>
+        
+        <div class="hero-content">
+            <span class="badge">Featured Story</span>
+            <h1>Pakistan Cars<br><span>Evolution</span></h1>
+            <p>Pakistan’s car culture blends nostalgia and innovation — celebrating vintage passion while embracing modern technology and style.</p>
+            <a href="#post1" class="btn-read">Read Full Story</a>
+        </div>
+    </section>
+
+    <section class="articles-feed" id="post1">
+        
+        <div class="post-row">
+            <div class="post-image">
+                <img src="assets/blog1.jpg" alt="Rolls Royce">
+            </div>
+            <div class="post-text">
+                <span class="post-date">Dec 12, 2025</span>
+                <h2>Luxury and Legacy: From Classics to Modern Marvels</h2>
+                <div class="blog-excerpt">
+                    <p>Passion, style, and innovation define Pakistan’s evolving car culture.</p>
+                    <p class="hidden-content">From the timeless charm of vintage vehicles to the advanced comfort of modern cars, every ride tells a story. Interiors crafted with care, smooth drives, and attention to detail make modern cars as much about experience as they are about performance—honoring the past while embracing the future.</p>
+                </div>
+                <button class="link-arrow" onclick="toggleBlogContent(this)">Read More <i class="fa-solid fa-arrow-right"></i></button>
+            </div>
+        </div>
+
+        <div class="post-row reversed">
+            <div class="post-image">
+                <img src="assets/blog2.webp" alt="Road Trip">
+            </div>
+            <div class="post-text">
+                <span class="post-date">Oct 14, 2025</span>
+                <h2>Epic Road Trips: Classic Drives and Modern Adventures</h2>
+                <div class="blog-excerpt">
+                    <p>From winding coastal highways to scenic mountain routes, every drive is an experience.</p>
+                    <p class="hidden-content">Whether cruising in a vintage classic or a modern marvel, the journey combines breathtaking views, unforgettable moments, and the thrill of the open road—celebrating the joy of driving in every era.</p>
+                </div>
+                <button class="link-arrow" onclick="toggleBlogContent(this)">Read More <i class="fa-solid fa-arrow-right"></i></button>
+            </div>
+        </div>
+        
+        <div class="post-row">
+            <div class="post-image">
+                <img src="assets/blog3.jpg" alt="Night Drive">
+            </div>
+            <div class="post-text">
+                <span class="post-date">Nov 28, 2025</span>
+                <h2>Powering the Future: Modernization and Renewable Energy</h2>
+                <div class="blog-excerpt">
+                    <p>Pakistan is embracing modernization with a focus on clean, sustainable energy.</p>
+                    <p class="hidden-content">From solar and wind projects to smart grids and eco-friendly technologies, the shift toward renewables is transforming industries, homes, and transportation—driving the nation toward a greener, more efficient future.</p>
+                </div>
+                <button class="link-arrow" onclick="toggleBlogContent(this)">Read More <i class="fa-solid fa-arrow-right"></i></button>
+            </div>
+        </div>
+
+    </section>
+
+    <div class="footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <div class="logo">
+                    <a href="#">Rent a Car <span>.</span></a>
+                </div>
+                <p>Experience the thrill of the drive with our premium fleet. Luxury, Comfort, and Speed awaiting you.</p>
+            </div>
+
+            <div class="footer-social">
+                <h3>Follow Us</h3>
+                <ul>
+                    <li><a href="https://www.facebook.com/WebDevByMahad/" target="_blank"><i class="fa-brands fa-facebook-f"></i></a></li>
+                    <li><a href="https://www.instagram.com/webdevbymahad/" target="_blank"><i class="fa-brands fa-instagram"></i></a></li>
+                    <li><a href="https://wa.me/923206806396" target="_blank"><i class="fa-brands fa-whatsapp"></i></a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="copyright">
+            <p>&copy; 2025 Rent a Car. Designed by Mahad Abbas.</p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+    
+        // Toggle Blog Content (Read More Logic)
+        function toggleBlogContent(btn) {
+            // Find the parent div (.post-text)
+            var parent = btn.parentElement;
+            // Find the hidden content paragraph inside
+            var hiddenText = parent.querySelector(".hidden-content");
+            
+            // Check if it's currently visible
+            if (hiddenText.style.display === "block") {
+                hiddenText.style.display = "none";
+                btn.innerHTML = 'Read More <i class="fa-solid fa-arrow-right"></i>';
+            } else {
+                hiddenText.style.display = "block";
+                btn.innerHTML = 'Read Less <i class="fa-solid fa-arrow-up"></i>';
+            }
+        }
+    </script>
+
+</body>
+</html>

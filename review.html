@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="styles/style.css">        
+    <link rel="stylesheet" href="styles/review-style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    
+    <title>Rent a Car - Customer Reviews</title>
+</head>
+<body>
+
+    <div class="header review-header">
+        <div class="navbar">
+            <div class="logo">
+                <a href="index.html">Rent a Car <span>.</span></a>
+            </div>
+            
+            <div class="hamburger" onclick="toggleMenu()">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+
+            <div class="menu" id="navMenu">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="cars.html">Cars</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="review.html" class="active">Reviews</a></li>
+                    <li><a href="blog.html">Blogs</a></li>
+                    <li><a href="login.html">Login</a></li>
+                </ul>
+            </div>
+            
+            <div class="socialmedia">
+                <ul>
+                    <li><a href="https://www.facebook.com/WebDevByMahad/" target="_blank"><i class="fa-brands fa-facebook-f"></i></a></li>
+                    <li><a href="https://www.instagram.com/webdevbymahad/" target="_blank"><i class="fa-brands fa-instagram"></i></a></li>
+                    <li><a href="https://wa.me/923206806396" target="_blank"><i class="fa-brands fa-whatsapp"></i></a></li>
+                    <li style="display: flex; align-items: center; margin-left: 10px;">
+                        <label class="switch">
+                            <input type="checkbox" onclick="togglePinkMode()">
+                            <span class="slider round"></span>
+                        </label>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    </div>
+
+    <section class="trust-hero">
+        <div class="container">
+            <div class="trust-badge">
+                <div class="score">4.9</div>
+                <div class="stars">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star-half-stroke"></i>
+                </div>
+                <p>Based on 1,200+ Happy Drivers</p>
+            </div>
+            <h1>Voices of the <br><span>Road</span></h1>
+        </div>
+    </section>
+
+    <section class="reviews-section">
+        <div class="reviews-grid">
+            
+            <div class="review-card">
+                <div class="card-top">
+                    <div class="profile">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="User">
+                        <div class="profile-info">
+                            <h3>Ahmed Khan</h3>
+                            <span>Rented: Land Cruiser ZX</span>
+                        </div>
+                    </div>
+                    <div class="rating">5.0 <i class="fa-solid fa-star"></i></div>
+                </div>
+                <p class="feedback">"Absolute beast of a car! The condition was pristine, and the booking process was smoother than the ride itself. Taking this to Naran was the best decision."</p>
+                <div class="card-footer">
+                    <span>2 days ago</span>
+                    <i class="fa-solid fa-quote-right"></i>
+                </div>
+            </div>
+
+            <div class="review-card highlight">
+                <div class="card-top">
+                    <div class="profile">
+                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="User">
+                        <div class="profile-info">
+                            <h3>Sarah Jenkins</h3>
+                            <span>Rented: Audi R8</span>
+                        </div>
+                    </div>
+                    <div class="rating">5.0 <i class="fa-solid fa-star"></i></div>
+                </div>
+                <p class="feedback">"I rented the R8 for my wedding photoshoot. The team was incredibly cooperative with the timing. The car looked stunning in the photos!"</p>
+                <div class="card-footer">
+                    <span>1 week ago</span>
+                    <i class="fa-solid fa-quote-right"></i>
+                </div>
+            </div>
+
+            <div class="review-card">
+                <div class="card-top">
+                    <div class="profile">
+                        <img src="https://randomuser.me/api/portraits/men/85.jpg" alt="User">
+                        <div class="profile-info">
+                            <h3>Bilal Ahmed</h3>
+                            <span>Rented: Civic RS</span>
+                        </div>
+                    </div>
+                    <div class="rating">4.5 <i class="fa-solid fa-star"></i></div>
+                </div>
+                <p class="feedback">"Great economical option for city travel. The car was clean and fuel average was good. Just wish the paperwork process was slightly faster."</p>
+                <div class="card-footer">
+                    <span>3 weeks ago</span>
+                    <i class="fa-solid fa-quote-right"></i>
+                </div>
+            </div>
+
+             <div class="review-card">
+                <div class="card-top">
+                    <div class="profile">
+                        <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="User">
+                        <div class="profile-info">
+                            <h3>Maria Rodriguez</h3>
+                            <span>Rented: Vintage Mustang</span>
+                        </div>
+                    </div>
+                    <div class="rating">5.0 <i class="fa-solid fa-star"></i></div>
+                </div>
+                <p class="feedback">"Driving this classic was a dream come true. It turns heads everywhere! The engine sound is just pure music. Will definitely rent again."</p>
+                <div class="card-footer">
+                    <span>1 month ago</span>
+                    <i class="fa-solid fa-quote-right"></i>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="add-review">
+        <div class="form-container">
+            <div class="form-left">
+                <h2>Share Your <br><span>Experience</span></h2>
+                <p>Your feedback fuels our passion. Tell us about your journey.</p>
+            </div>
+            <div class="form-right">
+                <form>
+                    <div class="input-group">
+                        <input type="text" placeholder="Your Name" required>
+                        <input type="text" placeholder="Car Model" required>
+                    </div>
+                    <div class="star-widget">
+                        <input type="radio" name="rate" id="rate-5">
+                        <label for="rate-5" class="fas fa-star"></label>
+                        <input type="radio" name="rate" id="rate-4">
+                        <label for="rate-4" class="fas fa-star"></label>
+                        <input type="radio" name="rate" id="rate-3">
+                        <label for="rate-3" class="fas fa-star"></label>
+                        <input type="radio" name="rate" id="rate-2">
+                        <label for="rate-2" class="fas fa-star"></label>
+                        <input type="radio" name="rate" id="rate-1">
+                        <label for="rate-1" class="fas fa-star"></label>
+                    </div>
+                    <textarea placeholder="Describe your experience..." required></textarea>
+                    <button type="submit">Post Review</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <div class="footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <div class="logo">
+                    <a href="#">Rent a Car <span>.</span></a>
+                </div>
+                <p>Experience the thrill of the drive with our premium fleet. Luxury, Comfort, and Speed awaiting you.</p>
+            </div>
+
+            <div class="footer-social">
+                <h3>Follow Us</h3>
+                <ul>
+                    <li><a href="https://www.facebook.com/WebDevByMahad/" target="_blank"><i class="fa-brands fa-facebook-f"></i></a></li>
+                    <li><a href="https://www.instagram.com/webdevbymahad/" target="_blank"><i class="fa-brands fa-instagram"></i></a></li>
+                    <li><a href="https://wa.me/923206806396" target="_blank"><i class="fa-brands fa-whatsapp"></i></a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="copyright">
+            <p>&copy; 2025 Rent a Car. Designed by Mahad Abbas.</p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    
+</body>
+</html>

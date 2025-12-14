@@ -1,0 +1,24 @@
+/* ___SLIDER FIXES___ */
+
+/* Ensures the slide container doesn't accidentally clip edges */
+.slick-list {
+    overflow: visible; /* Allows the full car to show */
+}
+
+/* Force every slide to be the exact same width/position */
+.slick-slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    outline: none; /* Removes the blue selection outline */
+}
+
+/* Ensure images fit perfectly inside the slide area */
+.hero .rightsection .my-car img {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    object-fit: contain; /* Ensures the whole car is visible, never cropped */
+    margin: 0 auto;
+    display: block;
+}

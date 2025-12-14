@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/about-style.css">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <title>Rent a Car - About Us</title>
+</head>
+<body>
+
+    <div class="header about-header">
+        <div class="navbar">
+            <div class="logo"><a href="index.html">Rent a Car <span>.</span></a></div>
+            
+            <div class="hamburger" onclick="toggleMenu()">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+
+            <div class="menu" id="navMenu">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="cars.html">Cars</a></li>
+                    <li><a href="about.html" class="active">About</a></li>
+                    <li><a href="review.html">Reviews</a></li>
+                    <li><a href="blog.html">Blogs</a></li>
+                    <li><a href="login.html">Login</a></li>
+                </ul>
+            </div>
+
+            <div class="socialmedia">
+                <ul>
+                    <li><a href="https://www.facebook.com/WebDevByMahad/" target="_blank"><i class="fa-brands fa-facebook-f"></i></a></li>
+                    <li><a href="https://www.instagram.com/webdevbymahad/" target="_blank"><i class="fa-brands fa-instagram"></i></a></li>
+                    <li><a href="https://wa.me/923206806396" target="_blank"><i class="fa-brands fa-whatsapp"></i></a></li>
+                    
+                    <li style="display: flex; align-items: center; margin-left: 10px;">
+                        <label class="switch">
+                            <input type="checkbox" onclick="togglePinkMode()">
+                            <span class="slider round"></span>
+                        </label>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <section class="about-hero">
+        <div class="hero-text">
+            <h5>Since 2025</h5>
+            <h1>Driven by <br><span>Passion</span></h1>
+            <p>We don't just rent cars; we curate experiences. From vintage classics to modern beasts, we define the road.</p>
+        </div>
+        <div class="hero-image">
+            <img src="assets/card2.jpg" alt="Garage">
+        </div>
+    </section>
+
+    <section class="stats-bar">
+        <div class="stat-box">
+            <h2 class="counter">50+</h2>
+            <p>Premium Cars</p>
+        </div>
+        <div class="stat-box">
+            <h2 class="counter">1.2k</h2>
+            <p>Happy Clients</p>
+        </div>
+        <div class="stat-box">
+            <h2 class="counter">24/7</h2>
+            <p>Roadside Support</p>
+        </div>
+    </section>
+
+    <section class="our-story">
+        <div class="story-container">
+            <div class="story-left">
+                <img src="assets/card3.jpg" alt="Handing Keys">
+            </div>
+            <div class="story-right">
+                <h3>Our Mission</h3>
+                <h2>Redefining <br><span>Luxury Travel</span></h2>
+                <p>Started in 2025, Rent a Car was born from a simple idea: Accessibility to luxury shouldn't be complicated.</p>
+                <p>Whether you need a vintage Mustang for a wedding or a Land Cruiser for a northern trip, we ensure the paperwork is minimal and the experience is maximum.</p>
+                
+                <div class="features-list">
+                    <span><i class="fa-solid fa-check"></i> No Hidden Charges</span>
+                    <span><i class="fa-solid fa-check"></i> Insured Fleet</span>
+                    <span><i class="fa-solid fa-check"></i> Chauffeur Option</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="team-section">
+        <div class="section-title">
+            <h2>Meet The <span>Creators</span></h2>
+        </div>
+        
+        <div class="team-grid">
+            
+            <div class="team-card">
+                <div class="member-img">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=2574&auto=format&fit=crop" alt="Mahad">
+                </div>
+                <div class="member-info">
+                    <h3>Mahad Abbas</h3>
+                    <span>Founder & Lead Designer</span>
+                    <div class="socials">
+                        <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+                        <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="team-card">
+                <div class="member-img">
+                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=2576&auto=format&fit=crop" alt="Manager">
+                </div>
+                <div class="member-info">
+                    <h3>Sarah Ali</h3>
+                    <span>Fleet Manager</span>
+                    <div class="socials">
+                        <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+                        <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="team-card">
+                <div class="member-img">
+                    <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=2574&auto=format&fit=crop" alt="Tech">
+                </div>
+                <div class="member-info">
+                    <h3>John Doe</h3>
+                    <span>Technical Lead</span>
+                    <div class="socials">
+                        <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+                        <a href="#"><i class="fa-brands fa-github"></i></a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <div class="footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <div class="logo">
+                    <a href="#">Rent a Car <span>.</span></a>
+                </div>
+                <p>Experience the thrill of the drive with our premium fleet. Luxury, Comfort, and Speed awaiting you.</p>
+            </div>
+
+            <div class="footer-social">
+                <h3>Follow Us</h3>
+                <ul>
+                    <li><a href="https://www.facebook.com/WebDevByMahad/" target="_blank"><i class="fa-brands fa-facebook-f"></i></a></li>
+                    <li><a href="https://www.instagram.com/webdevbymahad/" target="_blank"><i class="fa-brands fa-instagram"></i></a></li>
+                    <li><a href="https://wa.me/923206806396" target="_blank"><i class="fa-brands fa-whatsapp"></i></a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="copyright">
+            <p>&copy; 2025 Rent a Car. Designed by Mahad Abbas.</p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>

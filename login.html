@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/login-style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    
+    <title>Rent a Car - Login</title>
+</head>
+<body>
+
+    <div class="header login-header">
+        <div class="navbar">
+            <div class="logo"><a href="index.html">Rent a Car <span>.</span></a></div>
+            <div class="menu">
+                <ul>
+                    <li><a href="index.html" class="active">Home</a></li>
+                    <li><a href="cars.html">Cars</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="review.html">Reviews</a></li>
+                    <li><a href="blog.html">Blogs</a></li>
+                    <li><a href="login.html" class="active">Login</a></li>
+                </ul>
+            </div>
+            <div class="socialmedia">
+                <ul>
+                    <li style="display: flex; align-items: center; margin-left: 10px;">
+                        <label class="switch">
+                            <input type="checkbox" onclick="togglePinkMode()">
+                            <span class="slider round"></span>
+                        </label>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="video-bg">
+        <video autoplay muted loop playsinline>
+            <source src="assets/loginbg.mp4" type="video/mp4">
+        </video>
+        <div class="video-overlay"></div>
+    </div>
+
+    <div class="glass-container">
+        
+        <div class="form-toggle">
+            <button id="loginBtn" class="active" onclick="showLogin()">Log In</button>
+            <button id="signupBtn" onclick="showSignup()">Sign Up</button>
+        </div>
+
+        <form id="loginForm" class="user-form">
+            <h2>Welcome <span>Back</span></h2>
+            <p>Ready to hit the road?</p>
+            
+            <div class="input-box">
+                <i class="fa-solid fa-phone"></i>
+                <input type="tel" id="loginPhone" placeholder="Phone Number" required>
+            </div>
+            
+            <div class="input-box">
+                <i class="fa-solid fa-lock"></i>
+                <input type="password" id="loginPass" placeholder="Password" required>
+            </div>
+
+            <div class="options">
+                <label><input type="checkbox"> Remember me</label>
+                <a href="#">Forgot Password?</a>
+            </div>
+
+            <button type="submit" class="submit-btn">Log In</button>
+            
+            <div class="social-login">
+                <p>Or continue with</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fa-brands fa-google"></i></a>
+                    <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                </div>
+            </div>
+        </form>
+
+        <form id="signupForm" class="user-form scrollable-form" style="display: none;">
+            <h2>Join the <span>Club</span></h2>
+            <p>Details as per CNIC.</p>
+            
+            <div class="input-row">
+                <div class="input-box">
+                    <input type="text" id="fname" placeholder="First Name" style="padding-left: 15px; text-align: center;" required>
+                </div>
+                <div class="input-box">
+                    <input type="text" id="lname" placeholder="Last Name" style="padding-left: 15px; text-align: center;" required>
+                </div>
+            </div>
+
+            <div class="input-box">
+                <i class="fa-solid fa-id-card"></i>
+                <input type="text" id="cnic" placeholder="CNIC (e.g. 35202-1234567-1)" required>
+            </div>
+
+            <div class="input-row">
+                <div class="input-box">
+                    <select id="gender" required style="padding-left: 15px; text-align: center;">
+                        <option value="" disabled selected>Gender</option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+                <div class="input-box">
+                    <input type="text" id="city" placeholder="City" style="padding-left: 15px; text-align: center;" required>
+                </div>
+            </div>
+
+            <div class="input-box">
+                <i class="fa-solid fa-map-location-dot"></i>
+                <input type="text" id="address" placeholder="Complete Address" required>
+            </div>
+
+            <div class="input-box">
+                <i class="fa-solid fa-phone"></i>
+                <input type="tel" id="signupPhone" placeholder="Phone Number" required>
+            </div>
+
+            <div class="input-box">
+                <i class="fa-solid fa-envelope"></i>
+                <input type="email" id="signupEmail" placeholder="Email Address" required>
+            </div>
+            
+            <div class="input-box">
+                <i class="fa-solid fa-lock"></i>
+                <input type="password" id="signupPass" placeholder="Create Password" required>
+            </div>
+
+            <button type="submit" class="submit-btn">Register Account</button>
+        </form>
+
+    </div>
+
+    <script>
+        // 1. Toggle Pink Mode
+        function togglePinkMode() {
+            document.body.classList.toggle("pink-mode");
+        }
+
+        // 2. Toggle Login/Signup
+        var loginForm = document.getElementById("loginForm");
+        var signupForm = document.getElementById("signupForm");
+        var loginBtn = document.getElementById("loginBtn");
+        var signupBtn = document.getElementById("signupBtn");
+
+        function showLogin() {
+            loginForm.style.display = "block";
+            signupForm.style.display = "none";
+            loginBtn.classList.add("active");
+            signupBtn.classList.remove("active");
+        }
+
+        function showSignup() {
+            loginForm.style.display = "none";
+            signupForm.style.display = "block";
+            loginBtn.classList.remove("active");
+            signupBtn.classList.add("active");
+        }
+
+        // 3. Simulate Login
+        document.getElementById("loginForm").addEventListener("submit", function(event){
+            event.preventDefault(); 
+            var phone = document.getElementById("loginPhone").value;
+            var pass = document.getElementById("loginPass").value;
+
+            if(phone && pass) {
+                alert("Login Successful!");
+                window.location.href = "index.html"; 
+            } else {
+                alert("Please fill in all fields.");
+            }
+        });
+
+        // 4. Simulate Signup
+        document.getElementById("signupForm").addEventListener("submit", function(event){
+            event.preventDefault(); 
+            var fname = document.getElementById("fname").value;
+            var cnic = document.getElementById("cnic").value;
+            
+            if(fname && cnic) {
+                alert("Account created for " + fname);
+                showLogin();
+            } else {
+                alert("Please fill in all fields.");
+            }
+        });
+    </script>
+</body>
+</html>

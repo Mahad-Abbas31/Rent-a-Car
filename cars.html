@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/cars-style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    
+    <title>Rent a Car - Cars</title>
+</head>
+<body>
+
+    <div class="header cars-mode">
+        <div class="navbar">
+            <div class="logo">
+                <a href="index.html">Rent a Car <span>.</span></a>
+            </div>
+            
+            <div class="hamburger" onclick="toggleMenu()">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+
+            <div class="menu" id="navMenu">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="cars.html" class="active">Cars</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="review.html">Reviews</a></li>
+                    <li><a href="blog.html">Blogs</a></li>
+                    <li><a href="login.html">Login</a></li>
+                </ul>
+            </div>
+            
+            <div class="socialmedia">
+                <ul>
+                    <li><a href="https://www.facebook.com/WebDevByMahad/" target="_blank"><i class="fa-brands fa-facebook-f"></i></a></li>
+                    <li><a href="https://www.instagram.com/webdevbymahad/" target="_blank"><i class="fa-brands fa-instagram"></i></a></li>
+                    <li><a href="https://wa.me/923206806396" target="_blank"><i class="fa-brands fa-whatsapp"></i></a></li>
+                    
+                    <li style="display: flex; align-items: center; margin-left: 10px;">
+                        <label class="switch">
+                            <input type="checkbox" onclick="togglePinkMode()">
+                            <span class="slider round"></span>
+                        </label>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    </div>
+
+    <section class="page-header">
+        <h1>Choose Your <span>Drive</span></h1>
+        <p>From vintage classics to modern beasts. Prices listed in PKR.</p>
+    </section>
+
+    <section class="car-grid">
+
+        <div class="car-card">
+            <div class="card-image">
+                <span class="tag vintage">Vintage</span>
+                <img src="assets/card2.jpg" alt="American Muscle">
+            </div>
+            <div class="card-details">
+                <h2>American Muscle 1960</h2>
+                <div class="specs">
+                    <span><i class="fa-solid fa-chair"></i> 4 Seats</span>
+                    <span><i class="fa-solid fa-gears"></i> Manual</span>
+                    <span><i class="fa-solid fa-gas-pump"></i> Petrol</span>
+                </div>
+                <div class="price-container">
+                    <div class="price-box">
+                        <span class="label">Daily</span>
+                        <span class="amount">Rs 75,000</span>
+                    </div>
+                    <div class="price-box highlight">
+                        <span class="label">Monthly</span>
+                        <span class="amount">Rs 22,50,000</span>
+                    </div>
+                </div>
+                <button class="btn-book">Book Now</button>
+            </div>
+        </div>
+        
+        <div class="car-card">
+            <div class="card-image">
+                <span class="tag vintage">Vintage</span>
+                <img src="assets/card3.jpg" alt="Duesenberg J">
+            </div>
+            <div class="card-details">
+                <h2>Duesenberg J</h2>
+                <div class="specs">
+                    <span><i class="fa-solid fa-chair"></i> 2 Seats</span>
+                    <span><i class="fa-solid fa-gears"></i> Manual</span>
+                    <span><i class="fa-solid fa-bolt"></i> Petrol</span>
+                </div>
+                <div class="price-container">
+                    <div class="price-box">
+                        <span class="label">Daily</span>
+                        <span class="amount">Rs 60,000</span>
+                    </div>
+                    <div class="price-box highlight">
+                        <span class="label">Monthly</span>
+                        <span class="amount">Rs 18,00,000</span>
+                    </div>
+                </div>
+                <button class="btn-book">Book Now</button>
+            </div>
+        </div>
+        
+        <div class="car-card">
+            <div class="card-image">
+                <span class="tag vintage">Vintage</span>
+                <img src="assets/card9.jpg" alt="Chevrolet Corvette">
+            </div>
+            <div class="card-details">
+                <h2>Chevrolet Corvette</h2>
+                <div class="specs">
+                    <span><i class="fa-solid fa-chair"></i> 2 Seats</span>
+                    <span><i class="fa-solid fa-gears"></i> Manual</span>
+                    <span><i class="fa-solid fa-bolt"></i> Petrol</span>
+                </div>
+                <div class="price-container">
+                    <div class="price-box">
+                        <span class="label">Daily</span>
+                        <span class="amount">Rs 65,000</span>
+                    </div>
+                    <div class="price-box highlight">
+                        <span class="label">Monthly</span>
+                        <span class="amount">Rs 19,50,000</span>
+                    </div>
+                </div>
+                <button class="btn-book">Book Now</button>
+            </div>
+        </div>
+        
+        <div class="car-card">
+            <div class="card-image">
+                <span class="tag suv">SUV</span>
+                <img src="assets/card6.jpg" alt="Land Cruiser">
+            </div>
+            <div class="card-details">
+                <h2>Land Cruiser ZX</h2>
+                <div class="specs">
+                    <span><i class="fa-solid fa-chair"></i> 7 Seats</span>
+                    <span><i class="fa-solid fa-gears"></i> Auto</span>
+                    <span><i class="fa-solid fa-gas-pump"></i> Diesel</span>
+                </div>
+                <div class="price-container">
+                    <div class="price-box">
+                        <span class="label">Daily</span>
+                        <span class="amount">Rs 35,000</span>
+                    </div>
+                    <div class="price-box highlight">
+                        <span class="label">Monthly</span>
+                        <span class="amount">Rs 850,000</span>
+                    </div>
+                </div>
+                <button class="btn-book">Book Now</button>
+            </div>
+        </div>
+        
+        <div class="car-card">
+            <div class="card-image">
+                <span class="tag luxury">Luxury</span>
+                <img src="assets/card8.webp" alt="Honda Civic Modified">
+            </div>
+            <div class="card-details">
+                <h2>Honda Civic Modified</h2>
+                <div class="specs">
+                    <span><i class="fa-solid fa-chair"></i> 5 Seats</span>
+                    <span><i class="fa-solid fa-gears"></i> Auto</span>
+                    <span><i class="fa-solid fa-gas-pump"></i> Petrol</span>
+                </div>
+                <div class="price-container">
+                    <div class="price-box">
+                        <span class="label">Daily</span>
+                        <span class="amount">Rs 20,000</span>
+                    </div>
+                    <div class="price-box highlight">
+                        <span class="label">Monthly</span>
+                        <span class="amount">Rs 6,00,000</span>
+                    </div>
+                </div>
+                <button class="btn-book">Book Now</button>
+            </div>
+        </div>
+        
+        <div class="car-card">
+            <div class="card-image">
+                <span class="tag luxury">Luxury</span>
+                <img src="assets/card7.jpg" alt="Honda Civic Black">
+            </div>
+            <div class="card-details">
+                <h2>Honda Civic Black</h2>
+                <div class="specs">
+                    <span><i class="fa-solid fa-chair"></i> 5 Seats</span>
+                    <span><i class="fa-solid fa-gears"></i> Auto</span>
+                    <span><i class="fa-solid fa-bolt"></i> Petrol</span>
+                </div>
+                <div class="price-container">
+                    <div class="price-box">
+                        <span class="label">Daily</span>
+                        <span class="amount">Rs 18,000</span>
+                    </div>
+                    <div class="price-box highlight">
+                        <span class="label">Monthly</span>
+                        <span class="amount">Rs 5,40,000</span>
+                    </div>
+                </div>
+                <button class="btn-book">Book Now</button>
+            </div>
+        </div>
+
+        <div class="car-card">
+            <div class="card-image">
+                <span class="tag suv">SUV</span>
+                <img src="assets/card10.webp" alt="Toyota Fortuner">
+            </div>
+            <div class="card-details">
+                <h2>Toyota Fortuner</h2>
+                <div class="specs">
+                    <span><i class="fa-solid fa-chair"></i> 7 Seats</span>
+                    <span><i class="fa-solid fa-gears"></i> Auto</span>
+                    <span><i class="fa-solid fa-gas-pump"></i> Petrol</span>
+                </div>
+                <div class="price-container">
+                    <div class="price-box">
+                        <span class="label">Daily</span>
+                        <span class="amount">Rs 40,000</span>
+                    </div>
+                    <div class="price-box highlight">
+                        <span class="label">Monthly</span>
+                        <span class="amount">Rs 12,00,000</span>
+                    </div>
+                </div>
+                <button class="btn-book">Book Now</button>
+            </div>
+        </div>
+
+        <div class="car-card">
+            <div class="card-image">
+                <span class="tag suv">SUV</span>
+                <img src="assets/card11.webp" alt="Toyota Fortuner">
+            </div>
+            <div class="card-details">
+                <h2>Toyota Fortuner</h2>
+                <div class="specs">
+                    <span><i class="fa-solid fa-chair"></i> 7 Seats</span>
+                    <span><i class="fa-solid fa-gears"></i> Auto</span>
+                    <span><i class="fa-solid fa-gas-pump"></i> Petrol</span>
+                </div>
+                <div class="price-container">
+                    <div class="price-box">
+                        <span class="label">Daily</span>
+                        <span class="amount">Rs 45,000</span>
+                    </div>
+                    <div class="price-box highlight">
+                        <span class="label">Monthly</span>
+                        <span class="amount">Rs 13,50,000</span>
+                    </div>
+                </div>
+                <button class="btn-book">Book Now</button>
+            </div>
+        </div>
+       
+        <div class="car-card">
+            <div class="card-image">
+                <span class="tag luxury">Economical</span>
+                <img src="assets/card5.webp" alt="Mehran">
+            </div>
+            <div class="card-details">
+                <h2>Mehran</h2>
+                <div class="specs">
+                    <span><i class="fa-solid fa-chair"></i> 5 Seats</span>
+                    <span><i class="fa-solid fa-gears"></i> Auto</span>
+                    <span><i class="fa-solid fa-gas-pump"></i> Petrol</span>
+                </div>
+                <div class="price-container">
+                    <div class="price-box">
+                        <span class="label">Daily</span>
+                        <span class="amount">Rs 8,000</span>
+                    </div>
+                    <div class="price-box highlight">
+                        <span class="label">Monthly</span>
+                        <span class="amount">Rs 2,40,000</span>
+                    </div>
+                </div>
+                <button class="btn-book">Book Now</button>
+            </div>
+        </div>
+
+    </section>
+
+<!--____Footer____-->
+    <div class="footer">
+            <div class="footer-content">
+                
+                <div class="footer-brand">
+                    <div class="logo">
+                        <a href="#">Rent a Car <span>.</span></a>
+                    </div>
+                    <p>Experience the thrill of the drive with our premium fleet. Luxury, Comfort, and Speed awaiting you.</p>
+                </div>
+
+                <div class="footer-social">
+                    <h3>Follow Us</h3>
+                    <ul>
+                        <li><a href="https://www.facebook.com/WebDevByMahad/" target="_blank"><i class="fa-brands fa-facebook-f"></i></a></li>
+                        <li><a href="https://www.instagram.com/webdevbymahad/" target="_blank"><i class="fa-brands fa-instagram"></i></a></li>
+                        <li><a href="https://wa.me/923206806396" target="_blank"><i class="fa-brands fa-whatsapp"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="copyright">
+                <p>&copy; 2025 Rent a Car. Designed by Mahad Abbas.</p>
+            </div>
+    </div>
+
+
+    <script src="script.js"></script>
+</body>
+</html>

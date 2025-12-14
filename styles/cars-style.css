@@ -1,0 +1,303 @@
+/* ___Reuse Variables___ */
+:root {
+    --primary-color: #fff;
+    --secondary-color: #d43242;
+    --tertiary-color: #ff8938;
+    --bg-dark: #26284e;
+    --card-bg: #2f325e;
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--primary-color);
+    overflow-x: hidden;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* ___Header Fix___ */
+.header.cars-mode {
+    background-image: none !important;
+    background-color: transparent !important;
+    min-height: auto !important;
+    height: auto !important;
+    padding-bottom: 20px;
+}
+
+/* ___Page Title Section___ */
+.page-header {
+    text-align: center;
+    padding: 2rem 1rem 4rem 1rem;
+    margin-top: 20px;
+}
+
+.page-header h1 {
+    font-size: clamp(35px, 5vw, 60px);
+    text-transform: uppercase;
+    font-weight: 800;
+}
+
+.page-header h1 span {
+    color: var(--secondary-color);
+}
+
+.page-header p {
+    color: rgba(255, 255, 255, 0.6);
+    margin-top: 10px;
+    font-size: 16px;
+    letter-spacing: 1px;
+}
+
+/* ___Grid Layout___ */
+.car-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 3rem;
+    max-width: 1400px;
+    margin: 0 auto 5rem auto;
+    padding: 0 2rem;
+}
+
+/* ___Card Styling___ */
+.car-card {
+    background-color: var(--card-bg);
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.car-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    border-color: var(--secondary-color);
+}
+
+/* Image Area */
+.card-image {
+    position: relative;
+    height: 250px;
+    overflow: hidden;
+}
+
+.card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.car-card:hover .card-image img {
+    transform: scale(1.1);
+}
+
+/* Tags */
+.tag {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    padding: 5px 12px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    z-index: 10;
+    color: white;
+}
+.tag.vintage { background-color: #d43242; }
+.tag.luxury { background-color: #ff8938; }
+.tag.suv { background-color: #2a9d8f; }
+
+/* Details Area */
+.card-details {
+    padding: 20px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-details h2 {
+    font-size: 22px;
+    margin-bottom: 15px;
+    font-weight: 700;
+}
+
+/* Specs Icon Row */
+.specs {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+}
+
+.specs span {
+    font-size: 13px;
+    color: rgba(255,255,255,0.6);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.specs span i { color: var(--secondary-color); }
+
+/* Price Section */
+.price-container {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.price-box {
+    flex: 1;
+    background: rgba(0,0,0,0.2);
+    padding: 10px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.price-box.highlight {
+    background: rgba(212, 50, 66, 0.1);
+    border: 1px solid rgba(212, 50, 66, 0.3);
+}
+
+.price-box .label {
+    display: block;
+    font-size: 11px;
+    text-transform: uppercase;
+    opacity: 0.7;
+    margin-bottom: 3px;
+}
+
+.price-box .amount {
+    display: block;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+.price-box.highlight .amount { color: var(--tertiary-color); }
+
+/* Book Button */
+.btn-book {
+    width: 100%;
+    padding: 12px;
+    background: transparent;
+    border: 1px solid var(--secondary-color);
+    color: white;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: 0.3s;
+    border-radius: 4px;
+    margin-top: auto;
+}
+
+.btn-book:hover {
+    background: var(--secondary-color);
+    box-shadow: 0 5px 15px rgba(212, 50, 66, 0.4);
+}
+
+/* ___PINK MODE (Theme Logic)___ */
+body.pink-mode {
+    background-color: #fff0f5; /* Light Pink Bg */
+    color: #26284e; /* Dark Text */
+}
+
+/* Override variables for pink mode cards */
+body.pink-mode .car-card {
+    background-color: #ffffff;
+    border-color: rgba(0,0,0,0.1);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+}
+
+body.pink-mode .card-details h2 { color: #26284e; }
+body.pink-mode .page-header p { color: #555; }
+body.pink-mode .specs { border-bottom-color: rgba(0,0,0,0.1); }
+body.pink-mode .specs span { color: #666; }
+body.pink-mode .price-box { background: #f8f8f8; }
+body.pink-mode .price-box .amount { color: #26284e; }
+body.pink-mode .btn-book { color: #d43242; }
+body.pink-mode .btn-book:hover { color: white; }
+
+/* Hamburger Icon Visibility (Hidden on Desktop) */
+.hamburger {
+    display: none;
+    cursor: pointer;
+    font-size: 24px;
+    color: var(--primary-color);
+    z-index: 1001;
+}
+body.pink-mode .hamburger { color: #26284e; }
+
+/* ___RESPONSIVENESS (Mobile & Tablet)___ */
+@media (max-width: 992px) {
+    /* Navbar Layout */
+    .header .navbar {
+        justify-content: space-between;
+        padding: 1rem 2rem;
+    }
+
+    /* Show Hamburger */
+    .hamburger { display: block; }
+
+    /* Hide Menu Logic */
+    .header .navbar .menu {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: rgba(20, 20, 40, 0.95);
+        backdrop-filter: blur(20px);
+        flex-direction: column;
+        align-items: center;
+        padding: 2rem 0;
+        opacity: 0;
+        transform: translateY(-20px);
+        pointer-events: none;
+        transition: all 0.4s ease;
+        z-index: 999;
+    }
+
+    /* Pink Mode Menu Background */
+    body.pink-mode .header .navbar .menu {
+        background: rgba(255, 255, 255, 0.95);
+        border-bottom: 1px solid rgba(0,0,0,0.1);
+    }
+
+    /* Active Menu */
+    .header .navbar .menu.open {
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: auto;
+    }
+
+    .header .navbar .menu ul {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .header .navbar .menu ul li {
+        margin: 15px 0;
+        display: block;
+    }
+
+    /* Hide Social Icons in Navbar on mobile */
+    .header .navbar .socialmedia {
+        display: none;
+    }
+}
+
+@media (max-width: 600px) {
+    /* Stack grid to single column */
+    .car-grid {
+        grid-template-columns: 1fr; 
+        padding: 0 1.5rem;
+    }
+    
+    .page-header h1 { font-size: 30px; }
+}

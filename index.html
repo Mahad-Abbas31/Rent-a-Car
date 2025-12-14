@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!--____STYLESHEETS____-->
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/responsive.css">
+    <link rel="stylesheet" href="styles/slider.css">
+    
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.min.css" integrity="sha512-17EgCFERpgZKcm0j0fEq1YCJuyAWdz9KUtv1EjVuaOz8pDnh/0nZxmU6BBXwaaxqoi9PQXnRWqlcDB027hgv9A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.css" integrity="sha512-wR4oNhLBHf7smjy0K4oqzdWumd+r5/+6QO/vDda76MW5iug4PT7v86FoEkySIJft3XA0Ae6axhIvHrqwm793Nw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <!--____PAGE TAB TITLE and ICON____-->
+    <title>Rent a Car</title>
+</head>
+<body>
+    <!--____Header____-->
+    <div class="header" id="header">
+        
+        
+        <!--____NavBar____-->
+        <div class="navbar">
+            
+            <!--____Logo____-->
+            <div class="logo">
+                <a href="index.html">Rent a Car <span>.</span></a>
+            </div>
+            
+            <!--____Responsive Menu____-->
+            <div class="hamburger" onclick="toggleMenu()">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+            
+            <!--____Menu____-->
+            <div class="menu" id="navMenu">
+                <ul>
+                    <li><a href="index.html" class="active">Home</a></li>
+                    <li><a href="cars.html">Cars</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="review.html">Reviews</a></li>
+                    <li><a href="blog.html">Blogs</a></li>
+                    <li><a href="login.html">Login</a></li>
+                </ul>
+            </div>
+            
+            <!--____Social Media____-->
+            <div class="socialmedia">
+                <ul>
+                    <li><a href="https://www.facebook.com/WebDevByMahad/" target="_blank"><i class="fa-brands fa-facebook-f"></i></a></li>
+                    <li><a href="https://www.instagram.com/webdevbymahad/" target="_blank"><i class="fa-brands fa-instagram"></i></a></li>
+                    <li><a href="https://wa.me/923206806396" target="_blank"><i class="fa-brands fa-whatsapp"></i></a></li>
+                    
+                    <!--____Theme Toggle Button____-->
+                    <li style="display: flex; align-items: center; margin-left: 10px;">
+                        <label class="switch">
+                            <input type="checkbox" onclick="togglePinkMode()">
+                            <span class="slider round"></span>
+                        </label>
+                    </li>
+                </ul>
+            </div>
+            
+            
+        </div>
+        
+        <!--____Hero Section____-->
+        <div class="hero">
+            
+            <!--____Rows____-->
+            <div class="row">
+                
+                <!--____Left Section____-->
+                <div class="leftsection">
+                    
+                    <!--____Slogan and Name____-->
+                    <div class="content">
+                        <h2><span>RENT</span><br>A Car</h2>
+                        <p>The Best Platform where you can Rent your Favorite Cars according to Your Personalized Need, Especially Vintage Cars</p>
+                    </div>
+                    
+                    <!--____Discover Button____-->
+                    <button class="discover-btn">
+                        <a href="cars.html">Discover</a><span><i class="fa-solid fa-chevron-right"></i></span>
+                    </button>
+                    
+                    <div class="info">
+                        <div class="production">
+                            <p>Production</p>
+                            <h2>2025 - Continue</h2>
+                        </div>
+                        <div class="production">
+                            <p>Designer</p>
+                            <h2>Mahad Abbas</h2>
+                        </div>
+                    </div>
+                    
+                </div>
+                
+                <!--____Right Section____-->
+                <div class="rightsection">
+
+                    <!--____Cars Pics____-->
+                    <div class="my-car">
+                        <div><img src="assets/1.png" alt="Car 1"></div>
+                        <div><img src="assets/2.png" alt="Car 2"></div>
+                        <div><img src="assets/3.png" alt="Car 3"></div>
+                        <div><img src="assets/4.png" alt="Car 4"></div>
+                        <div><img src="assets/5.png" alt="Car 5"></div>
+                        <div><img src="assets/6.png" alt="Car 6"></div>
+                        <div><img src="assets/8.png" alt="Car 8"></div>
+                        <div><img src="assets/9.png" alt="Car 9"></div>
+                        <div><img src="assets/10.png" alt="Car 10"></div>
+                        <div><img src="assets/11.png" alt="Car 11"></div>
+                        <div><img src="assets/12.png" alt="Car 12"></div>
+                        <div><img src="assets/13.png" alt="Car 13"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--____Location____-->
+        <div class="location-section">
+            <div class="section-title">
+                <h2>Find <span>Us</span></h2>
+                <p>Visit our showroom anytime to find your perfect car.</p>
+            </div>
+            
+            <!--____Map Container____-->
+            <div class="location-container">
+                <!--____Map____-->
+                <div class="map-frame">
+                    <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d425667.9890855744!2d72.52207297343753!3d33.539573200000014!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38dfed30939130a1%3A0xa783ca687a3e67ab!2sDHA%20Islamabad%20Head%20Office!5e0!3m2!1sen!2s!4v1765714827738!5m2!1sen!2s" 
+                    width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy">
+                </iframe>
+            </div>
+            
+            <!--____Address____-->
+            <div class="location-details">
+                <div class="detail-box">
+                        <i class="fa-solid fa-location-dot"></i>
+                        <h3>Address</h3>
+                        <p>Defence Ave, Sector-B DHA Phase 1, Islamabad, Pakistan</p>
+                    </div>
+                    <div class="detail-box">
+                        <i class="fa-solid fa-phone"></i>
+                        <h3>Phone</h3>
+                        <p>+92 320 6806396</p>
+                    </div>
+                    <div class="detail-box">
+                        <i class="fa-solid fa-envelope"></i>
+                        <h3>Email</h3>
+                        <p>mahadabbas31@gmail.com</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    
+    <!--____Footer____-->
+    <div class="footer">
+            <div class="footer-content">
+                
+                <div class="footer-brand">
+                    <div class="logo">
+                        <a href="#">Rent a Car <span>.</span></a>
+                    </div>
+                    <p>Experience the thrill of the drive with our premium fleet. Luxury, Comfort, and Speed awaiting you.</p>
+                </div>
+
+                <div class="footer-social">
+                    <h3>Follow Us</h3>
+                    <ul>
+                        <li><a href="https://www.facebook.com/WebDevByMahad/" target="_blank"><i class="fa-brands fa-facebook-f"></i></a></li>
+                        <li><a href="https://www.instagram.com/webdevbymahad/" target="_blank"><i class="fa-brands fa-instagram"></i></a></li>
+                        <li><a href="https://wa.me/923206806396" target="_blank"><i class="fa-brands fa-whatsapp"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="copyright">
+                <p>&copy; 2025 Rent a Car. Designed by Mahad Abbas.</p>
+            </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.js"></script>
+    
+    <script src="script.js"></script>
+         
+</body>
+</html>

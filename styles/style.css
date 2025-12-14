@@ -1,0 +1,653 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root {
+    --primary-color: #fff;
+    --secondary-color: #d43242;
+    --tertiary-color: #ff8938;
+    --background-color: #26284e;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Montserrat", sans-serif;
+}
+
+html {
+    font-size: 16px;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
+body {
+    overflow-x: hidden;
+    width: 100%;
+    min-height: 100vh; 
+    background-color: var(--background-color);
+}
+
+a, a:hover {
+    text-decoration: none;
+    color: var(--primary-color);
+}
+
+ul {
+    list-style: none;
+}
+
+li {
+    display: inline-block;
+}
+
+/* ___Header Section___ */
+.header {
+    width: 100%;
+    min-height: 100vh;
+    height: auto;
+    background-image: url(../assets/bg.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    position: relative;
+    display: flex;     
+    flex-direction: column;
+}
+
+.header > .navbar {
+    height: auto;
+    min-height: 80px;
+    width: 100%;
+    max-width: 100%;
+    color: var(--primary-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem 3rem 1rem;
+    position: relative;
+    /* Flex wrap handling removed for cleaner mobile logic */
+    gap: 1rem;
+
+    /* ___Glassmorphism___ */
+    background: rgba(255, 255, 255, 0.05); 
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);       /*__Safari Browser Support__*/
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+
+.header > .navbar > .logo {
+    margin-left: 0;
+    flex-shrink: 0;
+}
+
+.header > .navbar > .logo > a {
+    font-size: clamp(20px, 2vw, 30px);
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.header > .navbar > .logo span {
+    font-size: clamp(24px, 2.2vw, 35px);
+    color: var(--secondary-color);
+}
+
+/* ___Menu___ */
+.header > .navbar > .menu {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.header > .navbar > .menu > ul > li {
+    margin: 0 0.5rem;
+}
+
+.header > .navbar > .menu > ul > li > a {
+    font-size: clamp(14px, 1.2vw, 19px);
+    letter-spacing: 2px;
+    padding: 0.5rem;
+    border-radius: 5px;
+    text-transform: capitalize;
+    transition: all 0.5s;
+    opacity: 0.6;
+    display: inline-block;
+    position: relative;
+}
+
+.header > .navbar > .menu > ul > li > a.active,
+.header > .navbar > .menu > ul > li > a:hover {
+    opacity: 1;
+}
+
+.header > .navbar > .menu > ul > li > a > span {
+    position: absolute;
+    top: -0.5rem;
+    left: -0.2rem;
+    color: var(--secondary-color);
+    font-size: clamp(50px, 5vw, 75px);
+}
+
+/* ___Hamburger Icon___ */
+.hamburger {
+    display: none; /* Hidden on Desktop */
+    cursor: pointer;
+    font-size: 24px;
+    color: var(--primary-color);
+    padding: 5px;
+    z-index: 1001; 
+}
+
+.header > .navbar > .socialmedia {
+    flex-shrink: 0;
+}
+
+.header > .navbar > .socialmedia > ul {
+    margin: 0;
+    display: flex;
+}
+
+.header > .navbar > .socialmedia > ul > li > a > i {
+    width: 30px;
+    height: 30px;
+    margin-right: 5px;
+    line-height: 30px;
+    border-radius: 50px;
+    text-align: center;
+    align-items: center;
+    font-size: 20px;
+    background-color: #cac5c542;
+    transition: all 0.3s ease-in-out;
+    color: var(--primary-color); /* Ensure visible */
+}
+
+/*____Hover effects____*/
+.header > .navbar > .socialmedia > ul > li > a > i.fa-facebook-f:hover { background: rgb(0, 81, 255); color: white; transform: translateY(-2px); }
+.header > .navbar > .socialmedia > ul > li > a > i.fa-whatsapp:hover { background: rgb(0, 166, 58); color: white; transform: translateY(-2px); }
+.header > .navbar > .socialmedia > ul > li > a > i.fa-instagram:hover { background: linear-gradient(45deg, #feda75, #fa7e1e, #d62976, #962fbf, #4f5bd5); color: white; transform: translateY(-2px); }
+
+/* ___HERO SECTION FIXED FOR RESPONSIVENESS___ */
+
+.hero {
+    width: 100%;
+    max-width: 100%;
+    padding: 2rem 0;
+    /* Ensures hero takes available space but allows content to expand */
+    flex: 1; 
+    display: flex;
+    align-items: center;
+}
+
+.hero > .row {
+    width: 100%;
+    max-width: 1400px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2rem 3rem;
+    margin: 0 auto;
+    gap: 3rem;
+    
+    /* CRITICAL FIX: Allows wrapping while zoomed in */
+    flex-wrap: wrap; 
+}
+
+.hero > .row > .leftsection {
+    /* CRITICAL FIX: Flex-basis allows it to shrink/grow properly */
+    flex: 1 1 500px; 
+    width: 100%;     
+    margin: 0;
+    min-width: 300px; /* Prevents it from getting too small */
+}
+
+/* Center text when layout wraps (Zoom In / Mobile) */
+@media (max-width: 992px) {
+    .hero > .row {
+        justify-content: center;
+        text-align: center;
+    }
+    .hero > .row > .leftsection {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .hero .info {
+        justify-content: center;
+    }
+}
+
+.hero > .row > .leftsection > .content > h2 {
+    letter-spacing: 0.3rem;
+    font-size: clamp(40px, 6vw, 100px);
+    font-weight: 900;
+    color: var(--primary-color);
+    text-transform: capitalize;
+    line-height: 1.1;
+}
+
+.hero > .row > .leftsection > .content > h2 > span {
+    letter-spacing: 0.5rem;
+    color: var(--secondary-color);
+}
+
+.hero > .row > .leftsection > .content > p {
+    margin: 1.5rem 0;
+    color: var(--primary-color);
+    line-height: 1.6;
+    font-size: clamp(13px, 1vw, 16px);
+    max-width: 90%;
+}
+
+/*____Animated Button____*/
+.hero > .row > .leftsection > .discover-btn {
+    display: inline-flex;
+    outline: none;
+    align-items: center;
+    cursor: pointer;
+    border-radius: 50px;
+    margin-top: 2rem;
+    padding: 0.7rem 1.8rem;
+    border: none;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.5s ease;
+    background: linear-gradient(90deg, rgb(255, 0, 0), rgb(248, 112, 1), rgb(253, 30, 1));
+    background-size: 200% 200%;
+    animation: rgb-light 3s linear infinite alternate;
+    box-shadow: 5px 20px 7px rgba(0, 0, 0, 0.3);
+}
+
+@keyframes rgb-light {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 100% 50%; }
+}
+
+.hero > .row > .leftsection > .discover-btn a {
+    color: var(--primary-color);
+    font-weight: 500;
+    font-size: clamp(18px, 1.5vw, 25px);
+    letter-spacing: 2px;
+    margin-right: 1rem;
+    text-transform: capitalize;
+}
+
+.hero > .row > .leftsection > .discover-btn span {
+    color: var(--primary-color);
+    font-size: clamp(16px, 1.3vw, 20px);
+}
+
+.hero > .row > .leftsection > .discover-btn:hover {
+    transform: translateY(-2px);
+}
+
+.hero .info {
+    width: 100%;
+    display: flex;
+    margin-top: 4rem;
+    gap: 2rem;
+}
+
+.hero .info .production {
+    line-height: 1.2;
+}
+
+.hero .info .production h2 {
+    margin-top: 0.8rem;
+    font-size: clamp(16px, 1.2vw, 20px);
+    letter-spacing: 1px;
+    color: var(--primary-color);
+}
+
+.hero .info .production p {
+    padding-right: 0;
+    letter-spacing: 1px;
+    color: var(--primary-color);
+    font-size: clamp(13px, 1vw, 16px);
+}
+
+/* ___RIGHT SECTION FIX___ */
+.hero .rightsection {
+    /* Changed flex: 1 to flex-basis strategy */
+    flex: 1 1 500px; 
+    width: 100%;
+    max-width: 950px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 300px; /* Prevent shrinking too much */
+}
+
+.hero .rightsection .my-car {
+    width: 100%;
+    max-width: 100%;
+}
+
+.hero .rightsection img {
+    width: 100%;
+    max-width: 100%; /* Changed from 950px to 100% of container */
+    height: auto;
+    aspect-ratio: 16/9;
+    object-fit: contain;
+    display: block;
+    margin: 0 auto;
+}
+
+/* ___Location Section Styles___ */
+.location-section {
+    width: 100%;
+    padding: 3rem 3rem 5rem;
+    background: linear-gradient(to top, rgba(0,0,0,0.5), transparent);
+}
+
+.location-section .section-title {
+    text-align: center;
+    margin-bottom: 3rem;
+    color: var(--primary-color);
+}
+
+.location-section .section-title h2 {
+    font-size: clamp(30px, 4vw, 50px);
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+.location-section .section-title h2 span { color: var(--secondary-color); }
+.location-section .section-title p { opacity: 0.8; margin-top: 10px; }
+
+.location-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    /* Glassmorphism reuse */
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    overflow: hidden;
+    padding: 2rem;
+}
+
+.map-frame {
+    flex: 2;
+    min-width: 300px;
+    height: 400px;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.location-details {
+    flex: 1;
+    min-width: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.detail-box {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1.5rem;
+    background: rgba(255,255,255,0.03);
+    border-radius: 10px;
+    transition: 0.3s;
+}
+
+.detail-box:hover { background: rgba(255,255,255,0.1); transform: translateX(5px); }
+
+.detail-box i {
+    font-size: 24px;
+    color: var(--secondary-color);
+    margin-bottom: 10px;
+}
+
+.detail-box h3 {
+    color: var(--primary-color);
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+
+.detail-box p {
+    color: var(--primary-color);
+    opacity: 0.8;
+    font-size: 14px;
+}
+
+/* ______LIGHT PINK MODE (Presentation Logic)______ */
+
+body.pink-mode {
+    /* 1. FLIP TEXT COLOR: Change white text to Dark Navy so it's readable on light bg */
+    --primary-color: #26284e; 
+    
+    /* 2. Update accents to a Hot Pink (pops nicely on light bg) */
+    --secondary-color: #ff1493; 
+    
+    /* 3. Change the card background to white/light pink for the light theme look */
+    --card-bg: #fff0f5; 
+}
+
+/* Specific Header Fix */
+body.pink-mode .header {
+    /* We use a very high opacity (0.96) Light Pink overlay. 
+       This almost completely hides the dark blue bg image, 
+       turning it into a soft pink textured background.
+    */
+    background-image: linear-gradient(rgba(247, 130, 130, 0.96), rgba(255, 228, 240, 0.96)), url(../assets/bg.png) !important;
+    
+    /* 'normal' blend mode ensures the pink sits on top like a layer of paint */
+    background-blend-mode: normal; 
+}
+
+/* Fix Navbar Glass to look like "Frosted Pink Glass" */
+body.pink-mode .header > .navbar,
+body.pink-mode .location-container {
+    background: rgba(255, 255, 255, 0.4); /* Much more transparent white */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.8);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05); /* Softer shadow */
+}
+
+/* Fix the Menu Links so they are dark and visible */
+body.pink-mode .header > .navbar > .menu > ul > li > a,
+body.pink-mode .location-section .section-title h2,
+body.pink-mode .location-section .section-title p,
+body.pink-mode .detail-box h3,
+body.pink-mode .detail-box p {
+    color: #26284e; /* Force dark text */
+}
+
+body.pink-mode .hamburger {
+    color: #26284e;
+}
+
+/* Discover Button - Soft Pastel Gradient */
+body.pink-mode .discover-btn {
+    background: linear-gradient(90deg, #ffb6c1, #ff69b4); /* Light Pink to Hot Pink */
+    box-shadow: 5px 15px 10px rgba(255, 105, 180, 0.3);
+}
+
+/* Make sure the main paragraph text is dark */
+body.pink-mode .hero > .row > .leftsection > .content > p,
+body.pink-mode .hero .info .production p {
+    color: #4a4a4a; /* Dark Grey for easier reading */
+}
+
+/* Update slider arrows to be dark so you can see them */
+body.pink-mode .slick-next:before, 
+body.pink-mode .slick-prev:before {
+    color: #26284e !important;
+}
+
+/* ___TOGGLE SWITCH STYLES___ */
+
+/* The Box Container */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 24px;
+    margin-bottom: 0; /* Fix alignment */
+}
+
+/* Hide the default HTML Checkbox */
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+/* The Sliding Track */
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc; /* Default Grey */
+    transition: .4s;
+    border-radius: 34px; /* Round pill shape */
+}
+
+/* The Sliding Circle (Knob) */
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 16px;
+    width: 16px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+/* ___Active State (When Clicked)___ */
+input:checked + .slider {
+    background-color: #ff69b4; /* Hot Pink when active */
+}
+
+/* Move the circle to the right */
+input:checked + .slider:before {
+    transform: translateX(26px);
+}
+
+/* Optional: Add a shadow to the knob for realism */
+.slider:before {
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+/* ___FOOTER SECTION___ */
+.footer {
+    width: 100%;
+    padding: 4rem 3rem 2rem;
+    background: rgba(0, 0, 0, 0.3); /* Darker overlay for footer */
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto 3rem;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+/* ___Footer Brand___ */
+.footer-brand {
+    max-width: 400px;
+}
+
+.footer-brand .logo a {
+    font-size: 30px;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    display: inline-block;
+}
+
+.footer-brand .logo span {
+    color: var(--secondary-color);
+    font-size: 35px;
+}
+
+.footer-brand p {
+    color: var(--primary-color);
+    opacity: 0.7;
+    line-height: 1.6;
+    font-size: 14px;
+}
+
+/* ___Footer Socials___ */
+.footer-social h3 {
+    color: var(--primary-color);
+    font-size: 18px;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.footer-social ul {
+    display: flex;
+    gap: 10px;
+}
+
+.footer-social ul li a i {
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    border-radius: 50%;
+    text-align: center;
+    background: rgba(255,255,255,0.1);
+    color: var(--primary-color);
+    transition: 0.3s;
+    font-size: 18px;
+}
+
+/* ___Hover Effects___ */
+.footer-social ul li a i.fa-facebook-f:hover { background: #1877f2; transform: translateY(-3px); }
+.footer-social ul li a i.fa-instagram:hover { background: #c32aa3; transform: translateY(-3px); }
+.footer-social ul li a i.fa-whatsapp:hover { background: #25d366; transform: translateY(-3px); }
+
+/* ___Copyright___ */
+.copyright {
+    text-align: center;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.copyright p {
+    font-size: 12px;
+    opacity: 0.5;
+    letter-spacing: 1px;
+    color: var(--primary-color);
+}
+
+/* ___PINK MODE FOOTER FIX___ */
+body.pink-mode .footer {
+    background: rgba(255, 255, 255, 0.6); /* Light glass effect */
+    border-top: 1px solid rgba(255, 255, 255, 0.8);
+}
+
+body.pink-mode .footer-brand .logo a,
+body.pink-mode .footer-brand p,
+body.pink-mode .footer-social h3,
+body.pink-mode .copyright p {
+    color: #26284e; /* Dark Text */
+}
+
+body.pink-mode .footer-social ul li a i {
+    background: rgba(38, 40, 78, 0.1); /* Darker icon bg */
+    color: #26284e;
+}
+
+body.pink-mode .footer-social ul li a i:hover {
+    color: white; /* White icon on hover */
+}

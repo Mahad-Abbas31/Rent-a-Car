@@ -1,0 +1,252 @@
+/* ___Reuse Variables___ */
+:root {
+    --primary-color: #fff;
+    --secondary-color: #d43242;
+    --tertiary-color: #ff8938;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Montserrat", sans-serif;
+    color: var(--primary-color);
+    
+    /* Center the Form vertically and horizontally */
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden; 
+}
+
+/* ___VIDEO BACKGROUND___ */
+.video-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Bottom Layer */
+}
+
+.video-bg video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(10, 10, 30, 0.6); 
+}
+
+/* ___NAVBAR FIX (CRITICAL)___ */
+.header.login-header {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    background: transparent !important;
+    
+    /* Ensure it doesn't take up full screen height */
+    height: auto !important; 
+    min-height: auto !important;
+    
+    /* Top Layer */
+    z-index: 1000; 
+}
+
+/* ___GLASS CONTAINER (THE FORM)___ */
+.glass-container {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    
+    width: 450px;
+    padding: 2.5rem;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+    
+    /* Middle Layer */
+    z-index: 10; 
+    
+    /* Push it down slightly so it doesn't touch the Logo */
+    margin-top: 80px; 
+
+    /* Scrollable Logic for Long Forms */
+    max-height: 80vh;
+    overflow-y: auto;
+    scrollbar-width: none; /* Hide scrollbar Firefox */
+}
+
+.glass-container::-webkit-scrollbar { 
+    display: none; /* Hide scrollbar Chrome */
+}
+
+/* ___Toggle Buttons___ */
+.form-toggle {
+    display: flex;
+    margin-bottom: 25px;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+}
+
+.form-toggle button {
+    flex: 1;
+    background: transparent;
+    border: none;
+    color: rgba(255,255,255,0.5);
+    font-size: 16px;
+    padding-bottom: 10px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.form-toggle button.active {
+    color: var(--secondary-color);
+    border-bottom: 2px solid var(--secondary-color);
+}
+
+/* ___Input Styling___ */
+.user-form h2 {
+    font-size: 30px;
+    margin-bottom: 5px;
+    text-align: center;
+}
+
+.user-form h2 span { color: var(--secondary-color); }
+
+.user-form p {
+    font-size: 13px;
+    margin-bottom: 20px;
+    opacity: 0.7;
+    text-align: center;
+}
+
+.input-box {
+    position: relative;
+    margin-bottom: 15px;
+}
+
+.input-box i {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--secondary-color);
+    font-size: 14px;
+}
+
+.input-box input, select {
+    width: 100%;
+    background: rgba(0,0,0,0.2);
+    border: 1px solid rgba(255,255,255,0.1);
+    padding: 12px 12px 12px 40px; /* Space for Icon */
+    border-radius: 50px;
+    color: white;
+    outline: none;
+    transition: 0.3s;
+    font-size: 14px;
+}
+
+.input-box input:focus, select:focus {
+    border-color: var(--secondary-color);
+    background: rgba(0,0,0,0.4);
+}
+
+/* Side by Side Inputs */
+.input-row {
+    display: flex;
+    gap: 10px;
+}
+.input-row .input-box {
+    flex: 1;
+}
+
+/* Fix Dropdown options */
+select option { background: #26284e; color: white; }
+
+.options {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    margin-bottom: 20px;
+    color: rgba(255,255,255,0.7);
+    padding: 0 10px;
+}
+
+.options a { color: white; text-decoration: underline; }
+
+.submit-btn {
+    width: 100%;
+    background: linear-gradient(90deg, #d43242, #ff8938);
+    border: none;
+    padding: 12px;
+    border-radius: 50px;
+    color: white;
+    font-weight: 700;
+    cursor: pointer;
+    font-size: 16px;
+    transition: 0.3s;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.submit-btn:hover {
+    transform: scale(1.02);
+    box-shadow: 0 5px 15px rgba(212, 50, 66, 0.4);
+}
+
+.social-login { text-align: center; }
+.social-login p { margin-bottom: 10px; }
+
+.social-icons a {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 35px;
+    height: 35px;
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 50%;
+    color: white;
+    margin: 0 5px;
+    transition: 0.3s;
+}
+
+.social-icons a:hover { background: white; color: #333; }
+
+/* ___PINK MODE___ */
+body.pink-mode .glass-container {
+    background: rgba(255, 255, 255, 0.25);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+}
+
+body.pink-mode .video-overlay {
+    background: rgba(214, 51, 132, 0.2);
+}
+
+body.pink-mode .user-form h2, 
+body.pink-mode .user-form p,
+body.pink-mode .form-toggle button {
+    color: #26284e;
+}
+
+body.pink-mode .form-toggle button.active {
+    color: #ff1493;
+    border-bottom-color: #ff1493;
+}
+
+body.pink-mode .input-box input, select {
+    background: rgba(255,255,255,0.6);
+    color: #333;
+    border-color: white;
+}
+body.pink-mode select option { background: #ffd1dc; color: #333; }
+
+body.pink-mode .submit-btn {
+    background: linear-gradient(90deg, #ff69b4, #ff1493);
+}

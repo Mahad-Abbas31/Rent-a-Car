@@ -1,0 +1,282 @@
+/* ____Tablet & Large Mobile (max-width: 1024px)____ */
+@media screen and (max-width: 1024px) {
+    .header {
+        /* CHANGED: min-height allows the bg to grow if content expands */
+        min-height: 100vh;
+        height: auto;
+        background-position: center;
+        background-size: cover;
+    }
+
+    .header > .navbar > .menu > ul > li {
+        margin-right: 15px;
+    }
+
+    /* ___Hero Section Logic___ */
+    .hero {
+        /* Ensures the container respects the content height */
+        height: auto;
+        padding-bottom: 5rem;
+    }
+
+    .hero > .row {
+        /* Force stacking: Text Top, Car Bottom */
+        flex-direction: column; 
+        align-items: center;
+        text-align: center;
+        gap: 3rem;
+    }
+
+    .hero > .row > .leftsection {
+        /* Reset width and align center */
+        flex: 0 0 auto;
+        width: 100%;
+        max-width: 800px;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center; 
+    }
+
+    .hero > .row > .leftsection > .content > h2 {
+        font-size: clamp(50px, 8vw, 80px); /* Adjusted for tablet */
+    }
+
+    .hero > .row > .leftsection > .content > p {
+        margin: 20px auto;
+        max-width: 700px;
+        text-align: center;
+    }
+
+    .hero > .row > .leftsection > .discover-btn {
+        margin-top: 30px;
+    }
+
+    .hero .info {
+        justify-content: center;
+        gap: 4rem;
+    }
+
+    .hero .rightsection {
+        width: 100%;
+        max-width: 700px; /* Limits car size on tablet so it doesn't look huge */
+        margin-top: 2rem;
+    }
+
+    .location-container {
+        flex-direction: column;
+    }
+    
+    .map-frame { height: 300px; }
+
+    /* ___Slick Slider Arrows___ */
+    /* Pulling arrows closer to the car so they don't get cut off */
+    .slick-prev {
+        left: -40px !important;
+    }
+
+    .slick-next {
+        right: -40px !important;
+    }
+}
+
+/* ____Tablet Portrait (max-width: 992px)____*/
+@media screen and (max-width: 992px) {
+    
+    .header > .navbar {
+        justify-content: space-between;
+        padding: 1rem 2rem;
+    }
+
+    /* ___HAMBURGER LOGIC START___ */
+    .hamburger {
+        display: block !important;
+    }
+
+    /* Hide Menu by Default on Mobile/Tablet */
+    .header > .navbar > .menu {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: rgba(20, 20, 40, 0.95); /* Dark background */
+        backdrop-filter: blur(20px);
+        flex-direction: column;
+        align-items: center;
+        padding: 2rem 0;
+        border-top: 1px solid rgba(255,255,255,0.1);
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+        
+        opacity: 0;
+        transform: translateY(-20px);
+        pointer-events: none;
+        transition: all 0.4s ease;
+    }
+
+    /* Active class toggled by JS */
+    .header > .navbar > .menu.open {
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: auto;
+    }
+
+    .header > .navbar > .menu > ul {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .header > .navbar > .menu > ul > li {
+        display: block;
+        margin: 15px 0;
+    }
+
+    .header > .navbar > .menu > ul > li > a {
+        font-size: 20px;
+        display: block;
+    }
+
+    /* Hide Social Media in Navbar to save space */
+    .header > .navbar > .socialmedia {
+        display: none; 
+    }
+    /* ___HAMBURGER LOGIC END___ */
+
+    .hero > .row > .leftsection > .content > h2 {
+        font-size: 50px;
+        letter-spacing: 3px;
+    }
+
+    .hero > .row > .leftsection > .content > h2 > span {
+        letter-spacing: 5px;
+    }
+
+    /* Arrows move even closer for smaller tablets */
+    .slick-prev {
+        left: -20px !important;
+        z-index: 100;
+    }
+
+    .slick-next {
+        right: -20px !important;
+        z-index: 100;
+    }
+}
+
+/*____Mobile Landscape (max-width: 640px)____*/
+@media screen and (max-width: 640px) {
+    .header {
+        background-size: cover;
+    }
+
+    .hero > .row > .leftsection > .content > h2 {
+        font-size: 40px;
+    }
+
+    /* Simplify the menu for mobile */
+    .header > .navbar > .menu > ul > li {
+        margin: 5px 8px;
+    }
+
+    .hero .rightsection {
+        padding: 0 20px; /* Adds safety padding so car doesn't touch edges */
+    }
+
+    /* Hide arrows on mobile if they interfere, or make them small */
+    .slick-next:before, .slick-prev:before {
+        font-size: 30px !important;
+    }
+    
+    .location-section {
+        padding: 2rem 1.5rem 4rem;
+    }
+}
+
+/*____Mobile Portrait (max-width: 480px)____*/
+@media screen and (max-width: 480px) {
+    
+    .header > .navbar {
+        padding: 1rem;
+    }
+
+    .header > .navbar > .logo > a {
+        font-size: 22px;
+    }
+
+    .hero > .row > .leftsection > .content > h2 {
+        font-size: 36px;
+        line-height: 1.2;
+    }
+
+    .hero > .row > .leftsection > .content > p {
+        font-size: 14px;
+        line-height: 1.5;
+    }
+
+    .discover-btn {
+        width: 100%; /* Full width button on mobile looks modern */
+        justify-content: center;
+        max-width: 300px;
+    }
+    
+    .map-frame { height: 250px; }
+
+    /* Adjust dots */
+    .slick-dots {
+        bottom: -40px !important;
+    }
+    
+    /* Move arrows to bottom or hide them */
+    .slick-prev, .slick-next {
+        top: 110% !important; /* Move arrows below the car */
+    }
+    
+    .slick-prev { left: 30% !important; }
+    .slick-next { right: 30% !important; }
+}
+
+/*____Small Mobile (max-width: 375px)____*/
+@media screen and (max-width: 375px) {
+    .hero > .row > .leftsection > .content > h2 {
+        font-size: 30px;
+    }
+    
+    .hero .info {
+        flex-direction: row; /* Keep them side by side if they fit, or stack */
+        gap: 1rem;
+        flex-wrap: wrap;
+    }
+}
+
+/*____Extra Small Mobile (max-width: 320px)____*/
+@media screen and (max-width: 320px) {
+    .header > .navbar > .logo > a {
+        font-size: 18px;
+    }
+
+    .header > .navbar > .menu > ul > li > a {
+        font-size: 11px;
+    }
+
+    .hero > .row > .leftsection > .content > h2 {
+        font-size: 26px;
+    }
+}
+
+/* ___Footer Responsive___ */
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 2rem;
+    }
+    
+    .footer-brand p {
+        margin: 10px auto; /* Center paragraph */
+    }
+
+    .footer-social ul {
+        justify-content: center; /* Center icons */
+    }
+    
+    .footer {
+        padding: 3rem 1.5rem 1.5rem;
+    }

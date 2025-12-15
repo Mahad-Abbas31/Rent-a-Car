@@ -15,9 +15,14 @@
     <div class="header login-header">
         <div class="navbar">
             <div class="logo"><a href="index.html">Rent a Car <span>.</span></a></div>
-            <div class="menu">
+            
+            <div class="hamburger" onclick="toggleMenu()">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+
+            <div class="menu" id="navMenu">
                 <ul>
-                    <li><a href="index.html" class="active">Home</a></li>
+                    <li><a href="index.html">Home</a></li>
                     <li><a href="cars.html">Cars</a></li>
                     <li><a href="about.html">About</a></li>
                     <li><a href="review.html">Reviews</a></li>
@@ -25,6 +30,7 @@
                     <li><a href="login.html" class="active">Login</a></li>
                 </ul>
             </div>
+            
             <div class="socialmedia">
                 <ul>
                     <li style="display: flex; align-items: center; margin-left: 10px;">
@@ -139,13 +145,10 @@
 
     </div>
 
+    <script src="script.js"></script>
     <script>
-        // 1. Toggle Pink Mode
-        function togglePinkMode() {
-            document.body.classList.toggle("pink-mode");
-        }
 
-        // 2. Toggle Login/Signup
+        // 3. Toggle Login/Signup
         var loginForm = document.getElementById("loginForm");
         var signupForm = document.getElementById("signupForm");
         var loginBtn = document.getElementById("loginBtn");
@@ -165,7 +168,7 @@
             signupBtn.classList.add("active");
         }
 
-        // 3. Simulate Login
+        // 4. Simulate Login
         document.getElementById("loginForm").addEventListener("submit", function(event){
             event.preventDefault(); 
             var phone = document.getElementById("loginPhone").value;
@@ -179,7 +182,7 @@
             }
         });
 
-        // 4. Simulate Signup
+        // 5. Simulate Signup
         document.getElementById("signupForm").addEventListener("submit", function(event){
             event.preventDefault(); 
             var fname = document.getElementById("fname").value;

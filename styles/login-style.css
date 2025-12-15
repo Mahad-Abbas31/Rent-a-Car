@@ -42,20 +42,17 @@ body {
     width: 100%;
     height: 100%;
     background: rgba(10, 10, 30, 0.6); 
+    transition: background 0.3s ease;
 }
 
-/* ___NAVBAR FIX (CRITICAL)___ */
+/* ___NAVBAR FIX___ */
 .header.login-header {
     position: absolute;
     top: 0;
     width: 100%;
     background: transparent !important;
-    
-    /* Ensure it doesn't take up full screen height */
     height: auto !important; 
     min-height: auto !important;
-    
-    /* Top Layer */
     z-index: 1000; 
 }
 
@@ -73,18 +70,16 @@ body {
     
     /* Middle Layer */
     z-index: 10; 
-    
-    /* Push it down slightly so it doesn't touch the Logo */
     margin-top: 80px; 
 
     /* Scrollable Logic for Long Forms */
     max-height: 80vh;
     overflow-y: auto;
-    scrollbar-width: none; /* Hide scrollbar Firefox */
+    scrollbar-width: none; 
 }
 
 .glass-container::-webkit-scrollbar { 
-    display: none; /* Hide scrollbar Chrome */
+    display: none; 
 }
 
 /* ___Toggle Buttons___ */
@@ -219,20 +214,30 @@ select option { background: #26284e; color: white; }
 
 .social-icons a:hover { background: white; color: #333; }
 
-/* ___PINK MODE___ */
+/* ___Hamburger Icon___ */
+.hamburger {
+    display: none;
+    cursor: pointer;
+    font-size: 24px;
+    color: var(--primary-color);
+    z-index: 1001;
+}
+
+/* ___PINK MODE (Theme Logic)___ */
 body.pink-mode .glass-container {
-    background: rgba(255, 255, 255, 0.25);
-    border: 1px solid rgba(255, 255, 255, 0.6);
+    background: rgba(255, 255, 255, 0.5); /* Stronger background for contrast */
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    box-shadow: 0 25px 50px rgba(0,0,0,0.1);
 }
 
 body.pink-mode .video-overlay {
-    background: rgba(214, 51, 132, 0.2);
+    background: rgba(214, 51, 132, 0.3); /* Visible Pink Overlay */
 }
 
 body.pink-mode .user-form h2, 
 body.pink-mode .user-form p,
 body.pink-mode .form-toggle button {
-    color: #26284e;
+    color: #26284e; /* Dark text */
 }
 
 body.pink-mode .form-toggle button.active {
@@ -241,12 +246,86 @@ body.pink-mode .form-toggle button.active {
 }
 
 body.pink-mode .input-box input, select {
-    background: rgba(255,255,255,0.6);
+    background: rgba(255,255,255,0.7);
     color: #333;
-    border-color: white;
+    border-color: #fff;
 }
 body.pink-mode select option { background: #ffd1dc; color: #333; }
+body.pink-mode .options, body.pink-mode .options a { color: #333; }
+body.pink-mode .submit-btn { background: linear-gradient(90deg, #ff69b4, #ff1493); }
+body.pink-mode .hamburger { color: #26284e; }
 
-body.pink-mode .submit-btn {
-    background: linear-gradient(90deg, #ff69b4, #ff1493);
+/* ___RESPONSIVENESS (Media Queries)___ */
+@media (max-width: 992px) {
+    /* Navbar Layout */
+    .header.login-header .navbar {
+        justify-content: space-between;
+        padding: 1rem 2rem;
+    }
+
+    /* Show Hamburger */
+    .hamburger { display: block; }
+
+    /* Hide Menu Logic */
+    .header .navbar .menu {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: rgba(20, 20, 40, 0.95);
+        backdrop-filter: blur(20px);
+        flex-direction: column;
+        align-items: center;
+        padding: 2rem 0;
+        opacity: 0;
+        transform: translateY(-20px);
+        pointer-events: none;
+        transition: all 0.4s ease;
+        z-index: 999;
+    }
+
+    /* Pink Mode Menu */
+    body.pink-mode .header .navbar .menu {
+        background: rgba(255, 255, 255, 0.95);
+        border-bottom: 1px solid rgba(0,0,0,0.1);
+    }
+
+    /* Active Menu */
+    .header .navbar .menu.open {
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: auto;
+    }
+
+    .header .navbar .menu ul {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .header .navbar .menu ul li {
+        margin: 15px 0;
+        display: block;
+    }
+
+    /* Keep toggle switch visible but hide other socials if crowded */
+    .header .navbar .socialmedia { display: flex; }
+    .header .navbar .socialmedia ul li a { display: none; } /* Hide icons */
+    .header .navbar .socialmedia ul li { margin: 0; } /* Reset margin */
+}
+
+@media (max-width: 500px) {
+    /* Adjust container width for phones */
+    .glass-container {
+        width: 90%;
+        padding: 1.5rem;
+        margin-top: 60px;
+    }
+
+    /* Stack input rows vertically on small screens */
+    .input-row {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .user-form h2 { font-size: 24px; }
 }

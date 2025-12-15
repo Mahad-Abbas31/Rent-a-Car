@@ -5,13 +5,12 @@
     --tertiary-color: #ff8938;
 }
 
+/* ___Body___*/
 body {
     margin: 0;
     padding: 0;
     font-family: "Montserrat", sans-serif;
     color: var(--primary-color);
-    
-    /* Center the Form vertically and horizontally */
     min-height: 100vh;
     display: flex;
     align-items: center;
@@ -26,7 +25,7 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: -1; /* Bottom Layer */
+    z-index: -1; 
 }
 
 .video-bg video {
@@ -45,7 +44,7 @@ body {
     transition: background 0.3s ease;
 }
 
-/* ___NAVBAR FIX___ */
+/*___ NAVBAR ___*/
 .header.login-header {
     position: absolute;
     top: 0;
@@ -56,28 +55,25 @@ body {
     z-index: 1000; 
 }
 
-/* ___GLASS CONTAINER (THE FORM)___ */
+/* ___GLASS CONTAINER (FORM)___ */
 .glass-container {
     background: rgba(255, 255, 255, 0.05);
     backdrop-filter: blur(15px);
     -webkit-backdrop-filter: blur(15px);
-    
     width: 450px;
     padding: 2.5rem;
     border-radius: 20px;
     border: 1px solid rgba(255, 255, 255, 0.1);
     box-shadow: 0 25px 50px rgba(0,0,0,0.5);
-    
-    /* Middle Layer */
     z-index: 10; 
     margin-top: 80px; 
-
-    /* Scrollable Logic for Long Forms */
+    /*___ Scroll Form ___*/
     max-height: 80vh;
     overflow-y: auto;
     scrollbar-width: none; 
 }
 
+/*___ Scroller hidden for chrome and edge browsers___*/
 .glass-container::-webkit-scrollbar { 
     display: none; 
 }
@@ -113,7 +109,9 @@ body {
     text-align: center;
 }
 
-.user-form h2 span { color: var(--secondary-color); }
+.user-form h2 span {
+    color: var(--secondary-color); 
+}
 
 .user-form p {
     font-size: 13px;
@@ -140,7 +138,7 @@ body {
     width: 100%;
     background: rgba(0,0,0,0.2);
     border: 1px solid rgba(255,255,255,0.1);
-    padding: 12px 12px 12px 40px; /* Space for Icon */
+    padding: 12px 12px 12px 40px;            /*____ Icon Space ____ */
     border-radius: 50px;
     color: white;
     outline: none;
@@ -153,7 +151,7 @@ body {
     background: rgba(0,0,0,0.4);
 }
 
-/* Side by Side Inputs */
+/*____ 2 Inputs in a Row ____ */
 .input-row {
     display: flex;
     gap: 10px;
@@ -162,8 +160,11 @@ body {
     flex: 1;
 }
 
-/* Fix Dropdown options */
-select option { background: #26284e; color: white; }
+/*____ Dropdown Options for Gender ____ */
+select option {
+    background: #26284e;
+    color: white;
+}
 
 .options {
     display: flex;
@@ -174,11 +175,14 @@ select option { background: #26284e; color: white; }
     padding: 0 10px;
 }
 
-.options a { color: white; text-decoration: underline; }
+.options a {
+    color: white;
+    text-decoration: underline;
+}
 
 .submit-btn {
     width: 100%;
-    background: linear-gradient(90deg, #d43242, #ff8938);
+    background: linear-gradient(90deg, var(--secondary-color), var(--tertiary-color));
     border: none;
     padding: 12px;
     border-radius: 50px;
@@ -196,8 +200,12 @@ select option { background: #26284e; color: white; }
     box-shadow: 0 5px 15px rgba(212, 50, 66, 0.4);
 }
 
-.social-login { text-align: center; }
-.social-login p { margin-bottom: 10px; }
+.social-login {
+    text-align: center;
+}
+.social-login p {
+    margin-bottom: 10px;
+}
 
 .social-icons a {
     display: inline-flex;
@@ -212,7 +220,10 @@ select option { background: #26284e; color: white; }
     transition: 0.3s;
 }
 
-.social-icons a:hover { background: white; color: #333; }
+.social-icons a:hover {
+    background: white;
+    color: #333;
+}
 
 /* ___Hamburger Icon___ */
 .hamburger {
@@ -225,19 +236,19 @@ select option { background: #26284e; color: white; }
 
 /* ___PINK MODE (Theme Logic)___ */
 body.pink-mode .glass-container {
-    background: rgba(255, 255, 255, 0.5); /* Stronger background for contrast */
+    background: rgba(255, 255, 255, 0.5); 
     border: 1px solid rgba(255, 255, 255, 0.8);
     box-shadow: 0 25px 50px rgba(0,0,0,0.1);
 }
 
 body.pink-mode .video-overlay {
-    background: rgba(214, 51, 132, 0.3); /* Visible Pink Overlay */
+    background: rgba(214, 51, 132, 0.3); 
 }
 
 body.pink-mode .user-form h2, 
 body.pink-mode .user-form p,
 body.pink-mode .form-toggle button {
-    color: #26284e; /* Dark text */
+    color: #26284e; 
 }
 
 body.pink-mode .form-toggle button.active {

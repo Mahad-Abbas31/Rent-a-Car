@@ -1,18 +1,30 @@
-/* ___Reuse Variables___ */
+/* ___Reuse Variables & Theme Connection___ */
 :root {
-    --primary-color: #fff;
-    --secondary-color: #d43242;
-    --tertiary-color: #ff8938;
-    --bg-dark: #26284e;
-    --card-bg: #2f325e; 
+    /* Define defaults for About Page (Dark Mode) */
+    --page-bg: #07081d;       
+    --card-bg: #f58888;
+    --hero-shadow: rgba(255,255,255,0.05); /* Shadow for images */
+    --stat-bar-bg: rgba(255,255,255,0.03);
+    
+    /* Inherit global theme colors from theme.css */
+    --text-main: var(--primary-color); 
+}
+
+/* ___LIGHT MODE OVERRIDES___ */
+/* This connects to the JS toggle class 'light-mode' */
+body.light-mode {
+    --page-bg: #f4f6f8;       /* Light Gray Page */
+    --card-bg: #ffffff;       /* White Cards */
+    --hero-shadow: rgba(0,0,0,0.1); /* Darker shadow for light mode */
+    --stat-bar-bg: rgba(0,0,0,0.05);
 }
 
 /* ___Base Styling___ */
 body {
-    background-color: var(--bg-dark);
-    color: var(--primary-color);
+    background-color: var(--page-bg); /* Uses dynamic variable */
+    color: var(--primary-color);      /* From theme.css */
     overflow-x: hidden;
-    transition: background-color 0.3s ease, color 0.3s ease;
+    transition: background-color 0.4s ease, color 0.4s ease;
 }
 
 /* ___Header Override___ */
@@ -55,8 +67,7 @@ body {
 
 .hero-text h1 span {
     color: var(--secondary-color);
-    -webkit-text-stroke: 1px var(--secondary-color);
-    color: transparent;
+    /* Removed text-stroke to look cleaner in light mode */
 }
 
 .hero-text p {
@@ -64,6 +75,7 @@ body {
     line-height: 1.6;
     opacity: 0.8;
     max-width: 500px;
+    color: var(--text-muted); /* Theme variable */
 }
 
 .hero-image {
@@ -76,18 +88,18 @@ body {
     height: 400px;
     object-fit: cover;
     border-radius: 20px;
-    box-shadow: 20px 20px 0px rgba(255,255,255,0.05); 
+    box-shadow: 20px 20px 0px var(--hero-shadow); /* Dynamic Shadow */
 }
 
 /* ___Stats Bar___ */
 .stats-bar {
     display: flex;
     justify-content: space-around;
-    background: rgba(255,255,255,0.03);
+    background: var(--stat-bar-bg); /* Dynamic */
     padding: 3rem 5%;
     margin-bottom: 5rem;
-    border-top: 1px solid rgba(255,255,255,0.05);
-    border-bottom: 1px solid rgba(255,255,255,0.05);
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
 }
 
 .stat-box { text-align: center; }
@@ -103,6 +115,7 @@ body {
     letter-spacing: 2px;
     font-size: 14px;
     opacity: 0.7;
+    color: var(--primary-color);
 }
 
 /* ___Story Section___ */
@@ -141,6 +154,7 @@ body {
     font-size: 40px;
     margin-bottom: 20px;
     line-height: 1.2;
+    color: var(--primary-color);
 }
 
 .story-right h2 span { color: var(--secondary-color); }
@@ -149,12 +163,14 @@ body {
     margin-bottom: 20px;
     opacity: 0.8;
     line-height: 1.6;
+    color: var(--text-muted);
 }
 
 .features-list span {
     display: block;
     margin-bottom: 10px;
     font-weight: 600;
+    color: var(--primary-color);
 }
 
 .features-list i {
@@ -176,6 +192,7 @@ body {
 .section-title h2 {
     font-size: 40px;
     text-transform: uppercase;
+    color: var(--primary-color);
 }
 
 .section-title span { color: var(--secondary-color); }
@@ -187,12 +204,13 @@ body {
 }
 
 .team-card {
-    background: var(--card-bg);
+    background: var(--card-bg); /* Dynamic */
     border-radius: 15px;
     overflow: hidden;
     text-align: center;
-    border: 1px solid rgba(255,255,255,0.05);
+    border: 1px solid var(--border-color);
     transition: 0.3s;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
 }
 
 .team-card:hover {
@@ -231,7 +249,7 @@ body {
 .socials { margin-top: 15px; }
 
 .socials a {
-    color: rgba(255,255,255,0.5);
+    color: var(--text-muted);
     margin: 0 5px;
     font-size: 18px;
     transition: 0.3s;
@@ -248,33 +266,6 @@ body {
     z-index: 1001;
 }
 
-/* ___PINK MODE (Theme Logic)___ */
-body.pink-mode {
-    background-color: #fff0f5; /* Light Pink Bg */
-    color: #26284e; /* Dark Text */
-}
-
-/* Override variables for pink mode specific elements */
-body.pink-mode .team-card {
-    background-color: #ffffff;
-    border-color: rgba(0,0,0,0.1);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
-}
-
-body.pink-mode .hero-text h1 span {
-    -webkit-text-stroke: 1px #d43242; /* Visible outline in light mode */
-    color: transparent;
-}
-
-body.pink-mode .member-info h3 { color: #26284e; }
-body.pink-mode .stats-bar { border-color: rgba(0,0,0,0.1); }
-body.pink-mode .stat-box p, 
-body.pink-mode .hero-text p,
-body.pink-mode .story-right p { color: #555; opacity: 1; }
-body.pink-mode .hero-image img { box-shadow: 20px 20px 0px rgba(0,0,0,0.1); }
-body.pink-mode .socials a { color: #888; }
-body.pink-mode .socials a:hover { color: #26284e; }
-body.pink-mode .hamburger { color: #26284e; }
 
 /* ___RESPONSIVE MEDIA QUERIES___ */
 @media (max-width: 992px) {
@@ -293,7 +284,10 @@ body.pink-mode .hamburger { color: #26284e; }
         top: 100%;
         left: 0;
         width: 100%;
-        background: rgba(20, 20, 40, 0.95);
+        
+        /* Uses dynamic background */
+        background: var(--page-bg); 
+        
         backdrop-filter: blur(20px);
         flex-direction: column;
         align-items: center;
@@ -303,12 +297,7 @@ body.pink-mode .hamburger { color: #26284e; }
         pointer-events: none;
         transition: all 0.4s ease;
         z-index: 999;
-    }
-
-    /* Pink Mode Menu Background */
-    body.pink-mode .header .navbar .menu {
-        background: rgba(255, 255, 255, 0.95);
-        border-bottom: 1px solid rgba(0,0,0,0.1);
+        border-bottom: 1px solid var(--border-color);
     }
 
     /* Active Menu */

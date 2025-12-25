@@ -1,10 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
 :root {
-    --primary-color: #fff;
-    --secondary-color: #d43242;
+    /* We removed the colors from here because they are now in theme.css.
+       We only keep static brand colors that don't change. */
+    --secondary-color: #ed1329;
     --tertiary-color: #ff8938;
-    --background-color: #26284e;
 }
 
 * {
@@ -24,11 +24,14 @@ body {
     overflow-x: hidden;
     width: 100%;
     min-height: 100vh; 
+    /* CHANGED: Uses variable for theme switching */
     background-color: var(--background-color);
+    transition: background-color 0.4s ease;
 }
 
 a, a:hover {
     text-decoration: none;
+    /* CHANGED: Uses variable */
     color: var(--primary-color);
 }
 
@@ -45,7 +48,13 @@ li {
     width: 100%;
     min-height: 100vh;
     height: auto;
-    background-image: url(../assets/bg.png);
+    
+    /* ___IMPORTANT UPDATE___ 
+       Added var(--hero-overlay). 
+       In Default/Dark mode, this is transparent (no change).
+       In Light mode, it adds a white haze so text is visible. */
+    background: var(--hero-overlay), url(../assets/bg1.png);
+    
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
@@ -59,22 +68,26 @@ li {
     min-height: 80px;
     width: 100%;
     max-width: 100%;
+    /* CHANGED: Uses variable */
     color: var(--primary-color);
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 2rem 3rem 1rem;
     position: relative;
-    /* Flex wrap handling removed for cleaner mobile logic */
     gap: 1rem;
 
     /* ___Glassmorphism___ */
-    background: rgba(255, 255, 255, 0.05); 
+    /* CHANGED: Uses variable for light mode support */
+    background: var(--nav-bg); 
+    
     backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);       /*__Safari Browser Support__*/
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    -webkit-backdrop-filter: blur(15px);
+    /* CHANGED: Uses variable */
+    border-bottom: 1px solid var(--border-color);
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     z-index: 1000;
+    transition: background-color 0.4s ease;
 }
 
 .header > .navbar > .logo {
@@ -110,14 +123,21 @@ li {
     padding: 0.5rem;
     border-radius: 5px;
     text-transform: capitalize;
-    transition: all 0.5s;
+    transition: all 1s;
     opacity: 0.6;
+    font-weight: 600;
     display: inline-block;
     position: relative;
 }
 
+.navbar .wrapper{
+    display: flex;
+}
+
 .header > .navbar > .menu > ul > li > a.active,
 .header > .navbar > .menu > ul > li > a:hover {
+    border-bottom: 2px solid var(--secondary-color);
+    border-radius: 0;
     opacity: 1;
 }
 
@@ -134,21 +154,22 @@ li {
     display: none; /* Hidden on Desktop */
     cursor: pointer;
     font-size: 24px;
+    /* CHANGED: Uses variable */
     color: var(--primary-color);
     padding: 5px;
     z-index: 1001; 
 }
 
-.header > .navbar > .socialmedia {
+.header > .navbar > .wrapper > .socialmedia {
     flex-shrink: 0;
 }
 
-.header > .navbar > .socialmedia > ul {
+.header > .navbar > .wrapper > .socialmedia > ul {
     margin: 0;
     display: flex;
 }
 
-.header > .navbar > .socialmedia > ul > li > a > i {
+.header > .navbar > .wrapper > .socialmedia > ul > li > a > i {
     width: 30px;
     height: 30px;
     margin-right: 5px;
@@ -157,15 +178,17 @@ li {
     text-align: center;
     align-items: center;
     font-size: 20px;
-    background-color: #cac5c542;
+    /* CHANGED: Uses variable */
+    background-color: var(--social-bg);
     transition: all 0.3s ease-in-out;
-    color: var(--primary-color); /* Ensure visible */
+    /* CHANGED: Uses variable */
+    color: var(--primary-color);
 }
 
 /*____Hover effects____*/
-.header > .navbar > .socialmedia > ul > li > a > i.fa-facebook-f:hover { background: rgb(0, 81, 255); color: white; transform: translateY(-2px); }
-.header > .navbar > .socialmedia > ul > li > a > i.fa-whatsapp:hover { background: rgb(0, 166, 58); color: white; transform: translateY(-2px); }
-.header > .navbar > .socialmedia > ul > li > a > i.fa-instagram:hover { background: linear-gradient(45deg, #feda75, #fa7e1e, #d62976, #962fbf, #4f5bd5); color: white; transform: translateY(-2px); }
+.header > .navbar > .wrapper > .socialmedia > ul > li > a > i.fa-facebook-f:hover { background: rgb(0, 81, 255); color: white; transform: translateY(-2px); }
+.header > .navbar > .wrapper > .socialmedia > ul > li > a > i.fa-whatsapp:hover { background: rgb(0, 166, 58); color: white; transform: translateY(-2px); }
+.header > .navbar > .wrapper > .socialmedia > ul > li > a > i.fa-instagram:hover { background: linear-gradient(45deg, #feda75, #fa7e1e, #d62976, #962fbf, #4f5bd5); color: white; transform: translateY(-2px); }
 
 /* ___HERO SECTION FIXED FOR RESPONSIVENESS___ */
 
@@ -173,7 +196,6 @@ li {
     width: 100%;
     max-width: 100%;
     padding: 2rem 0;
-    /* Ensures hero takes available space but allows content to expand */
     flex: 1; 
     display: flex;
     align-items: center;
@@ -188,20 +210,16 @@ li {
     padding: 2rem 3rem;
     margin: 0 auto;
     gap: 3rem;
-    
-    /* CRITICAL FIX: Allows wrapping while zoomed in */
     flex-wrap: wrap; 
 }
 
 .hero > .row > .leftsection {
-    /* CRITICAL FIX: Flex-basis allows it to shrink/grow properly */
     flex: 1 1 500px; 
     width: 100%;     
     margin: 0;
-    min-width: 300px; /* Prevents it from getting too small */
+    min-width: 300px;
 }
 
-/* Center text when layout wraps (Zoom In / Mobile) */
 @media (max-width: 992px) {
     .hero > .row {
         justify-content: center;
@@ -221,6 +239,7 @@ li {
     letter-spacing: 0.3rem;
     font-size: clamp(40px, 6vw, 100px);
     font-weight: 900;
+    /* CHANGED: Uses variable */
     color: var(--primary-color);
     text-transform: capitalize;
     line-height: 1.1;
@@ -233,29 +252,59 @@ li {
 
 .hero > .row > .leftsection > .content > p {
     margin: 1.5rem 0;
+    /* CHANGED: Uses variable */
     color: var(--primary-color);
     line-height: 1.6;
     font-size: clamp(13px, 1vw, 16px);
     max-width: 90%;
 }
 
-/*____Animated Button____*/
-.hero > .row > .leftsection > .discover-btn {
-    display: inline-flex;
-    outline: none;
-    align-items: center;
-    cursor: pointer;
-    border-radius: 50px;
+/* ___3D Button Container___ */
+.btn-container {
+    padding: 3px;
+    background: linear-gradient(180deg, rgb(253, 30, 1), rgb(180, 20, 0));
+    border-radius: 10px;
+    transform: perspective(850px) rotateX(14deg) rotateY(8deg) rotateZ(-11deg);
+    box-shadow:
+        -4px 4px 0px #8b0000,
+        -5px 7px 8px rgba(139, 0, 0, 0.5),
+        -10px 13px 18px rgba(139, 0, 0, 0.3),
+        -20px 20px 40px rgba(139, 0, 0, 0.6);
+    position: relative;
+    transition: all 0.4s ease;
+    display: inline-block;
     margin-top: 2rem;
-    padding: 0.7rem 1.8rem;
+}
+
+.btn-container:hover {
+    transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+    box-shadow:
+        0px 4px 5px #8b0000,
+        0px 7px 8px rgba(139, 0, 0, 0.5),
+        0px 13px 18px rgba(139, 0, 0, 0.3),
+        0px 20px 40px rgba(139, 0, 0, 0.6);
+}
+
+/* ___The Actual Button___ */
+.glowing-button {
+    color: white; /* Button text always white, even in light mode */
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 15px 40px;
+    font-size: 1.8rem;
+    font-weight: 700;
+    border-radius: 10px;
     border: none;
-    font-weight: 600;
     text-decoration: none;
-    transition: all 0.5s ease;
     background: linear-gradient(90deg, rgb(255, 0, 0), rgb(248, 112, 1), rgb(253, 30, 1));
     background-size: 200% 200%;
     animation: rgb-light 3s linear infinite alternate;
-    box-shadow: 5px 20px 7px rgba(0, 0, 0, 0.3);
+    box-shadow: inset 0px -6px 10px rgba(0, 0, 0, 0.3);
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+    transition: all 0.3s ease;
 }
 
 @keyframes rgb-light {
@@ -263,22 +312,23 @@ li {
     100% { background-position: 100% 50%; }
 }
 
-.hero > .row > .leftsection > .discover-btn a {
-    color: var(--primary-color);
-    font-weight: 500;
-    font-size: clamp(18px, 1.5vw, 25px);
-    letter-spacing: 2px;
-    margin-right: 1rem;
-    text-transform: capitalize;
-}
-
-.hero > .row > .leftsection > .discover-btn span {
-    color: var(--primary-color);
-    font-size: clamp(16px, 1.3vw, 20px);
-}
-
-.hero > .row > .leftsection > .discover-btn:hover {
+.glowing-button:hover {
+    filter: brightness(1.1);
+    box-shadow:
+        inset 0px -10px 20px rgba(0, 0, 0, 0.4),
+        0px 8px 15px rgba(255, 69, 0, 0.4);
     transform: translateY(-2px);
+    color: white;
+}
+
+.arrow {
+    font-size: 18px;
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+.glowing-button:hover .arrow {
+    transform: translateX(5px);
 }
 
 .hero .info {
@@ -296,19 +346,20 @@ li {
     margin-top: 0.8rem;
     font-size: clamp(16px, 1.2vw, 20px);
     letter-spacing: 1px;
+    /* CHANGED: Uses variable */
     color: var(--primary-color);
 }
 
 .hero .info .production p {
     padding-right: 0;
     letter-spacing: 1px;
+    /* CHANGED: Uses variable */
     color: var(--primary-color);
     font-size: clamp(13px, 1vw, 16px);
 }
 
 /* ___RIGHT SECTION FIX___ */
 .hero .rightsection {
-    /* Changed flex: 1 to flex-basis strategy */
     flex: 1 1 500px; 
     width: 100%;
     max-width: 950px;
@@ -316,7 +367,7 @@ li {
     display: flex;
     align-items: center;
     justify-content: center;
-    min-width: 300px; /* Prevent shrinking too much */
+    min-width: 300px;
 }
 
 .hero .rightsection .my-car {
@@ -326,7 +377,7 @@ li {
 
 .hero .rightsection img {
     width: 100%;
-    max-width: 100%; /* Changed from 950px to 100% of container */
+    max-width: 100%;
     height: auto;
     aspect-ratio: 16/9;
     object-fit: contain;
@@ -338,12 +389,14 @@ li {
 .location-section {
     width: 100%;
     padding: 3rem 3rem 5rem;
-    background: linear-gradient(to top, rgba(0,0,0,0.5), transparent);
+    /* CHANGED: Uses variable */
+    background: var(--location-gradient);
 }
 
 .location-section .section-title {
     text-align: center;
     margin-bottom: 3rem;
+    /* CHANGED: Uses variable */
     color: var(--primary-color);
 }
 
@@ -362,10 +415,11 @@ li {
     gap: 2rem;
     max-width: 1200px;
     margin: 0 auto;
-    /* Glassmorphism reuse */
-    background: rgba(255, 255, 255, 0.05);
+    /* CHANGED: Uses variable */
+    background: var(--glass-card-bg);
     backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    /* CHANGED: Uses variable */
+    border: 1px solid var(--border-color);
     border-radius: 20px;
     overflow: hidden;
     padding: 2rem;
@@ -394,7 +448,8 @@ li {
     flex-direction: column;
     align-items: flex-start;
     padding: 1.5rem;
-    background: rgba(255,255,255,0.03);
+    /* CHANGED: Uses variable */
+    background: var(--detail-box-bg);
     border-radius: 10px;
     transition: 0.3s;
 }
@@ -408,246 +463,256 @@ li {
 }
 
 .detail-box h3 {
+    /* CHANGED: Uses variable */
     color: var(--primary-color);
     font-size: 18px;
     margin-bottom: 5px;
 }
 
 .detail-box p {
+    /* CHANGED: Uses variable */
     color: var(--primary-color);
     opacity: 0.8;
     font-size: 14px;
 }
 
-/* ______LIGHT PINK MODE (Presentation Logic)______ */
-
-body.pink-mode {
-    /* 1. FLIP TEXT COLOR: Change white text to Dark Navy so it's readable on light bg */
-    --primary-color: #26284e; 
-    
-    /* 2. Update accents to a Hot Pink (pops nicely on light bg) */
-    --secondary-color: #ff1493; 
-    
-    /* 3. Change the card background to white/light pink for the light theme look */
-    --card-bg: #fff0f5; 
-}
-
-/* Specific Header Fix */
-body.pink-mode .header {
-    /* We use a very high opacity (0.96) Light Pink overlay. 
-       This almost completely hides the dark blue bg image, 
-       turning it into a soft pink textured background.
-    */
-    background-image: linear-gradient(rgba(247, 130, 130, 0.96), rgba(255, 228, 240, 0.96)), url(../assets/bg.png) !important;
-    
-    /* 'normal' blend mode ensures the pink sits on top like a layer of paint */
-    background-blend-mode: normal; 
-}
-
-/* Fix Navbar Glass to look like "Frosted Pink Glass" */
-body.pink-mode .header > .navbar,
-body.pink-mode .location-container {
-    background: rgba(255, 255, 255, 0.4); /* Much more transparent white */
-    border-bottom: 1px solid rgba(255, 255, 255, 0.8);
-    box-shadow: 0 4px 15px rgba(0,0,0,0.05); /* Softer shadow */
-}
-
-/* Fix the Menu Links so they are dark and visible */
-body.pink-mode .header > .navbar > .menu > ul > li > a,
-body.pink-mode .location-section .section-title h2,
-body.pink-mode .location-section .section-title p,
-body.pink-mode .detail-box h3,
-body.pink-mode .detail-box p {
-    color: #26284e; /* Force dark text */
-}
-
-body.pink-mode .hamburger {
-    color: #26284e;
-}
-
-/* Discover Button - Soft Pastel Gradient */
-body.pink-mode .discover-btn {
-    background: linear-gradient(90deg, #ffb6c1, #ff69b4); /* Light Pink to Hot Pink */
-    box-shadow: 5px 15px 10px rgba(255, 105, 180, 0.3);
-}
-
-/* Make sure the main paragraph text is dark */
-body.pink-mode .hero > .row > .leftsection > .content > p,
-body.pink-mode .hero .info .production p {
-    color: #4a4a4a; /* Dark Grey for easier reading */
-}
-
-/* Update slider arrows to be dark so you can see them */
-body.pink-mode .slick-next:before, 
-body.pink-mode .slick-prev:before {
-    color: #26284e !important;
-}
-
-/* ___TOGGLE SWITCH STYLES___ */
-
-/* The Box Container */
-.switch {
-    position: relative;
-    display: inline-block;
-    width: 50px;
-    height: 24px;
-    margin-bottom: 0; /* Fix alignment */
-}
-
-/* Hide the default HTML Checkbox */
-.switch input {
-    opacity: 0;
-    width: 0;
-    height: 0;
-}
-
-/* The Sliding Track */
-.slider {
-    position: absolute;
-    cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: #ccc; /* Default Grey */
-    transition: .4s;
-    border-radius: 34px; /* Round pill shape */
-}
-
-/* The Sliding Circle (Knob) */
-.slider:before {
-    position: absolute;
-    content: "";
-    height: 16px;
-    width: 16px;
-    left: 4px;
-    bottom: 4px;
-    background-color: white;
-    transition: .4s;
-    border-radius: 50%;
-}
-
-/* ___Active State (When Clicked)___ */
-input:checked + .slider {
-    background-color: #ff69b4; /* Hot Pink when active */
-}
-
-/* Move the circle to the right */
-input:checked + .slider:before {
-    transform: translateX(26px);
-}
-
-/* Optional: Add a shadow to the knob for realism */
-.slider:before {
-    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-}
-
-/* ___FOOTER SECTION___ */
+/* ___FOOTER STYLES___ */
 .footer {
     width: 100%;
-    padding: 4rem 3rem 2rem;
-    background: rgba(0, 0, 0, 0.3); /* Darker overlay for footer */
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 80px 0 0;
+    font-family: "Montserrat", sans-serif;
+    /* CHANGED: Uses variable */
+    background-color: var(--footer-bg);
+    /* CHANGED: Uses variable */
+    color: var(--primary-color);
+    position: relative;
+    border-top: 4px solid var(--secondary-color);
+    transition: background-color 0.4s ease;
 }
 
-.footer-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.footer-container {
     max-width: 1200px;
-    margin: 0 auto 3rem;
-    flex-wrap: wrap;
-    gap: 2rem;
+    margin: auto;
+    padding: 0 40px;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1.2fr; 
+    gap: 40px;
 }
 
-/* ___Footer Brand___ */
-.footer-brand {
-    max-width: 400px;
-}
-
-.footer-brand .logo a {
-    font-size: 30px;
-    font-weight: 700;
+/* ___Column Headings___ */
+.footer-col h3 {
+    font-size: 18px;
+    /* CHANGED: Uses variable */
+    color: var(--primary-color);
     text-transform: uppercase;
-    margin-bottom: 1rem;
+    margin-bottom: 25px;
+    font-weight: 700;
+    position: relative;
     display: inline-block;
 }
 
-.footer-brand .logo span {
-    color: var(--secondary-color);
-    font-size: 35px;
+.footer-col h3::after {
+    content: '';
+    display: block;
+    width: 40px;
+    height: 3px;
+    background: var(--secondary-color);
+    margin-top: 8px;
+    border-radius: 2px;
 }
 
-.footer-brand p {
-    color: var(--primary-color);
-    opacity: 0.7;
-    line-height: 1.6;
+/* ___Paragraphs___ */
+.footer-col p {
+    /* CHANGED: Uses variable */
+    color: var(--text-muted);
+    line-height: 1.8;
     font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 20px;
 }
 
-/* ___Footer Socials___ */
-.footer-social h3 {
+/* ___Logo Styling___ */
+.footer-logo a {
+    font-size: 28px;
+    font-weight: 800;
+    /* CHANGED: Uses variable */
     color: var(--primary-color);
-    font-size: 18px;
-    margin-bottom: 1rem;
     text-transform: uppercase;
-    letter-spacing: 1px;
+    text-decoration: none;
+    display: block;
+    margin-bottom: 15px;
+}
+.footer-logo span {
+    color: var(--secondary-color);
+    font-size: 40px;
 }
 
-.footer-social ul {
+/* ___Social Icons___ */
+.footer-social-icons {
     display: flex;
-    gap: 10px;
+    gap: 12px;
 }
-
-.footer-social ul li a i {
+.footer-social-icons a {
     width: 40px;
     height: 40px;
-    line-height: 40px;
-    border-radius: 50%;
-    text-align: center;
-    background: rgba(255,255,255,0.1);
+    background: rgb(149 146 146 / 28%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* CHANGED: Uses variable */
     color: var(--primary-color);
+    border-radius: 5px;
     transition: 0.3s;
-    font-size: 18px;
+    font-size: 16px;
+}
+.footer-social-icons a:hover {
+    background: var(--secondary-color);
+    transform: translateY(-3px);
+    color: white;
 }
 
-/* ___Hover Effects___ */
-.footer-social ul li a i.fa-facebook-f:hover { background: #1877f2; transform: translateY(-3px); }
-.footer-social ul li a i.fa-instagram:hover { background: #c32aa3; transform: translateY(-3px); }
-.footer-social ul li a i.fa-whatsapp:hover { background: #25d366; transform: translateY(-3px); }
+/* ___Quick Links___ */
+.footer-links li, .contact-info li {
+    margin-bottom: 12px;
+    display: block;
+}
+.footer-links li a {
+    /* CHANGED: Uses variable */
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 14px;
+    transition: 0.3s;
+    display: flex;
+    align-items: center;
+    font-weight: 500;
+}
+.footer-links li a::before {
+    content: '\f105'; /* FontAwesome chevron right */
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    margin-right: 8px;
+    color: var(--tertiary-color); 
+    transition: 0.3s;
+}
+.footer-links li a:hover {
+    /* CHANGED: Uses variable */
+    color: var(--primary-color);
+    padding-left: 5px;
+}
+.footer-links li a:hover::before {
+    color: var(--secondary-color);
+}
 
+/* ___Contact Icons___ */
+.contact-info li {
+    /* CHANGED: Uses variable */
+    color: var(--text-muted);
+    font-size: 14px;
+    display: flex;
+    gap: 12px;
+    font-weight: 500;
+    align-items: flex-start;
+}
+.contact-info li i {
+    color: var(--secondary-color); 
+    margin-top: 4px;
+}
+
+/* ___Newsletter___ */
+.newsletter form {
+    position: relative; 
+    width: 100%;
+    margin-top: 20px;
+    display: flex;      
+}
+
+.newsletter input {
+    width: 100%;
+    height: 55px;       
+    padding: 0 60px 0 20px; 
+    /* CHANGED: Uses variable */
+    background: var(--glass-card-bg);
+    /* CHANGED: Uses variable */
+    border: 1px solid var(--border-color);
+    /* CHANGED: Uses variable */
+    color: var(--primary-color);
+    border-radius: 50px; 
+    outline: none;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+.newsletter input:focus {
+    border-color: var(--tertiary-color);
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.newsletter button {
+    position: absolute;
+    right: 5px;
+    top: 50%;            
+    transform: translateY(-50%); 
+    
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;  
+    background: var(--secondary-color);
+    color: var(--primary-color);
+    border: none;
+    cursor: pointer;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    font-size: 16px;
+    transition: 0.3s ease;
+    z-index: 2;
+}
+
+.newsletter button:hover {
+    background: var(--tertiary-color);
+    transform: translateY(-50%) scale(1.1);
+}
+
+/* ___Responsive Fix for Mobile___ */
+@media (max-width: 576px) {
+    .newsletter input {
+        font-size: 16px; 
+        height: 50px;    
+    }
+    .newsletter button {
+        width: 40px;
+        height: 40px;
+    }
+}
 /* ___Copyright___ */
 .copyright {
+    /* CHANGED: Uses variable */
+    background: var(--copyright-bg);
     text-align: center;
-    padding-top: 2rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 25px 0;
+    margin-top: 60px;
+    /* CHANGED: Uses variable */
+    border-top: 1px solid var(--border-color);
 }
-
 .copyright p {
-    font-size: 12px;
-    opacity: 0.5;
-    letter-spacing: 1px;
-    color: var(--primary-color);
+    margin: 0;
+    font-size: 13px;
+    font-weight: 500;
+    /* CHANGED: Uses variable */
+    color: var(--text-muted);
 }
 
-/* ___PINK MODE FOOTER FIX___ */
-body.pink-mode .footer {
-    background: rgba(255, 255, 255, 0.6); /* Light glass effect */
-    border-top: 1px solid rgba(255, 255, 255, 0.8);
+/* ___Responsive___ */
+@media(max-width: 992px) {
+    .footer-container {
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+    }
 }
-
-body.pink-mode .footer-brand .logo a,
-body.pink-mode .footer-brand p,
-body.pink-mode .footer-social h3,
-body.pink-mode .copyright p {
-    color: #26284e; /* Dark Text */
-}
-
-body.pink-mode .footer-social ul li a i {
-    background: rgba(38, 40, 78, 0.1); /* Darker icon bg */
-    color: #26284e;
-}
-
-body.pink-mode .footer-social ul li a i:hover {
-    color: white; /* White icon on hover */
+@media(max-width: 576px) {
+    .footer-container {
+        grid-template-columns: 1fr;
+    }
 }

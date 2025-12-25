@@ -6,6 +6,8 @@
     
     <link rel="stylesheet" href="styles/style.css">
     <link rel="stylesheet" href="styles/about-style.css">
+    <link rel="stylesheet" href="styles/theme.css">
+    
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
     <title>Rent a Car - About Us</title>
@@ -13,13 +15,21 @@
 <body>
 
     <div class="header about-header">
+
+                <!--____NavBar____-->
         <div class="navbar">
-            <div class="logo"><a href="index.html">Rent a Car <span>.</span></a></div>
-            
+
+            <!--____Logo____-->
+            <div class="logo">
+                <a href="index.html">Rent a Car <span>.</span></a>
+            </div>
+
+            <!--____Responsive Menu____-->
             <div class="hamburger" onclick="toggleMenu()">
                 <i class="fa-solid fa-bars"></i>
             </div>
 
+            <!--____Menu____-->
             <div class="menu" id="navMenu">
                 <ul>
                     <li><a href="index.html">Home</a></li>
@@ -31,21 +41,48 @@
                 </ul>
             </div>
 
-            <div class="socialmedia">
-                <ul>
-                    <li><a href="https://www.facebook.com/WebDevByMahad/" target="_blank"><i class="fa-brands fa-facebook-f"></i></a></li>
-                    <li><a href="https://www.instagram.com/webdevbymahad/" target="_blank"><i class="fa-brands fa-instagram"></i></a></li>
-                    <li><a href="https://wa.me/923206806396" target="_blank"><i class="fa-brands fa-whatsapp"></i></a></li>
-                    
-                    <li style="display: flex; align-items: center; margin-left: 10px;">
-                        <label class="switch">
-                            <input type="checkbox" onclick="togglePinkMode()">
-                            <span class="slider round"></span>
-                        </label>
-                    </li>
-                </ul>
+            <div class="wrapper">
+
+                <!--____Social Media____-->
+                <div class="socialmedia">
+                    <ul>
+                        <li><a href="https://www.facebook.com/WebDevByMahad/" target="_blank"><i
+                                    class="fa-brands fa-facebook-f"></i></a></li>
+                        <li><a href="https://www.instagram.com/webdevbymahad/" target="_blank"><i
+                                    class="fa-brands fa-instagram"></i></a></li>
+                        <li><a href="https://wa.me/923206806396" target="_blank"><i
+                                    class="fa-brands fa-whatsapp"></i></a>
+                        </li>
+
+                    </ul>
+                </div>
+
+                <!--____Theme Toggle____-->
+                <div class="theme-toggle-wrapper" style="margin-left: 20px; display: flex; align-items: center;">
+                    <label class="theme-switch">
+                        <input type="checkbox" class="theme-switch__checkbox" id="theme-toggle">
+                        <div class="theme-switch__container">
+                            <div class="theme-switch__clouds"></div>
+                            <div class="theme-switch__stars-container">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 144 55" fill="none">...</svg>
+                            </div>
+                            <div class="theme-switch__circle-container">
+                                <div class="theme-switch__sun-moon-container">
+                                    <div class="theme-switch__moon">
+                                        <div class="theme-switch__spot"></div>
+                                        <div class="theme-switch__spot"></div>
+                                        <div class="theme-switch__spot"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </label>
+                </div>
+
             </div>
+
         </div>
+
     </div>
 
     <section class="about-hero">
@@ -129,6 +166,7 @@
                 </div>
             </div>
 
+            <!-- ___Zaryab Khan___ -->
             <div class="team-card">
                 <div class="member-img">
                     <img src="assets/zar.jpg" alt="Tech">
@@ -137,8 +175,23 @@
                     <h3>Zaryab Khan</h3>
                     <span>Technical Lead</span>
                     <div class="socials">
-                        <a href="#"><i class="fa-brands fa-linkedin"></i></a>
-                        <a href="#"><i class="fa-brands fa-github"></i></a>
+                        <a href="https://www.linkedin.com/in/muhammad-zaryab-khan-b038b71b2?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app"><i class="fa-brands fa-linkedin"></i></a>
+                        <a href="https://github.com/MUHAMMADZARYABKHAN-21"><i class="fa-brands fa-github"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ___Shiri Abid___ -->
+            <div class="team-card">
+                <div class="member-img">
+                    <img src="assets/shiri.jpeg" alt="Tech">
+                </div>
+                <div class="member-info">
+                    <h3>Sheeri Abid</h3>
+                    <span>Web Manager</span>
+                    <div class="socials">
+                        <a href="https://www.linkedin.com/in/sheraz-abid-182728388?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"><i class="fa-brands fa-linkedin"></i></a>
+                        <a href=""><i class="fa-brands fa-github"></i></a>
                     </div>
                 </div>
             </div>
@@ -146,29 +199,67 @@
         </div>
     </section>
 
-    <div class="footer">
-        <div class="footer-content">
-            <div class="footer-brand">
-                <div class="logo">
-                    <a href="index.html">Rent a Car <span>.</span></a>
+    <footer class="footer">
+        <div class="footer-container">
+
+            <div class="footer-col">
+                <div class="footer-logo">
+                    <a href="#">Rent a Car <span>.</span></a>
                 </div>
-                <p>Experience the thrill of the drive with our premium fleet. Luxury, Comfort, and Speed awaiting you.</p>
+                <p>Experience the thrill of the drive with our premium fleet. We provide luxury, comfort, and speed at
+                    the most affordable rates in the country.</p>
+                <div class="footer-social-icons">
+                    <a href="https://www.facebook.com/WebDevByMahad/" target="_blank"><i
+                            class="fa-brands fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/webdevbymahad/" target="_blank"><i
+                            class="fa-brands fa-instagram"></i></a>
+                    <a href="https://wa.me/923206806396" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+                </div>
             </div>
 
-            <div class="footer-social">
-                <h3>Follow Us</h3>
-                <ul>
-                    <li><a href="https://www.facebook.com/WebDevByMahad/" target="_blank"><i class="fa-brands fa-facebook-f"></i></a></li>
-                    <li><a href="https://www.instagram.com/webdevbymahad/" target="_blank"><i class="fa-brands fa-instagram"></i></a></li>
-                    <li><a href="https://wa.me/923206806396" target="_blank"><i class="fa-brands fa-whatsapp"></i></a></li>
+            <div class="footer-col">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="cars.html">Cars</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="review.html">Customer Reviews</a></li>
+                    <li><a href="blog.html">Latest Blogs</a></li>
+                    <li><a href="login.html">Login</a></li>
                 </ul>
+            </div>
+
+            <div class="footer-col">
+                <h3>Contact Us</h3>
+                <ul class="contact-info">
+                    <li><i class="fa-solid fa-location-dot"></i> DHA Phase 1, Islamabad, Pakistan</li>
+                    <li><i class="fa-solid fa-phone"></i> +92 320 6806396</li>
+                    <li><i class="fa-solid fa-envelope"></i> mahadabbas31@gmail.com</li>
+                    <li><i class="fa-solid fa-clock"></i> Mon - Sat: 9:00 AM - 9:00 PM</li>
+                </ul>
+            </div>
+
+            <div class="footer-col newsletter">
+                <h3>Newsletter</h3>
+                <p>Subscribe to get the latest updates, offers, and discounts directly to your inbox.</p>
+
+                <form action="#">
+                    <input type="email" placeholder="Your Email Address" required>
+                    <button type="submit">
+                        <i class="fa-solid fa-paper-plane"></i>
+                    </button>
+                </form>
             </div>
         </div>
 
         <div class="copyright">
-            <p>&copy; 2025 Rent a Car. Designed by Mahad Abbas.</p>
+            <p>&copy; 2025 Rent a Car. All Rights Reserved. Designed by Mahad Abbas.</p>
         </div>
-    </div>
+    </footer>
+
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.js"></script>
 
     <script src="script.js"></script>
 

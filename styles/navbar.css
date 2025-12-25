@@ -1,0 +1,221 @@
+/* ============================
+NAVBAR & HEADER STYLES
+=============================== */
+
+/* ___Base Header___ */
+.header {
+    width: 100%;
+    min-height: 100vh;
+    height: auto;
+    /* Default Background (Home) */
+    background: var(--hero-overlay), url(../assets/bg1.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    position: relative;
+    display: flex;     
+    flex-direction: column;
+}
+
+/* ___Navbar Container___ */
+.header > .navbar {
+    height: auto;
+    min-height: 80px;
+    width: 100%;
+    max-width: 100%;
+    color: var(--primary-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem 3rem 1rem;
+    position: relative;
+    gap: 1rem;
+    
+    /* Glassmorphism & Theme Support */
+    background: var(--nav-bg); 
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border-bottom: 1px solid var(--border-color);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    transition: background-color 0.4s ease;
+}
+
+/* ___Logo___ */
+.header > .navbar > .logo {
+    margin-left: 0;
+    flex-shrink: 0;
+}
+
+.header > .navbar > .logo > a {
+    font-size: clamp(20px, 2vw, 30px);
+    font-weight: 700;
+    text-transform: uppercase;
+    color: inherit;
+    text-decoration: none;
+}
+
+.header > .navbar > .logo span {
+    font-size: clamp(24px, 2.2vw, 35px);
+    color: var(--secondary-color);
+}
+
+/* ___Menu Links___ */
+.header > .navbar .menu {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.header > .navbar .menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.header > .navbar .menu ul li {
+    display: inline-block;
+    margin: 0 0.5rem;
+}
+
+.header > .navbar .menu ul li a {
+    font-size: clamp(14px, 1.2vw, 19px);
+    letter-spacing: 2px;
+    padding: 0.5rem;
+    border-radius: 5px;
+    text-transform: capitalize;
+    transition: all 0.3s; /* Smoothed out transition */
+    opacity: 0.6;
+    font-weight: 600;
+    display: inline-block;
+    position: relative;
+    color: inherit;
+    text-decoration: none;
+}
+
+/* Active State & Hover */
+.header > .navbar .menu ul li a.active,
+.header > .navbar .menu ul li a:hover {
+    opacity: 1;
+    color: var(--primary-color);
+}
+
+/* Span dot above link (Optional style preserved) */
+.header > .navbar .menu ul li a > span {
+    position: absolute;
+    top: -0.5rem;
+    left: -0.2rem;
+    color: var(--secondary-color);
+    font-size: clamp(50px, 5vw, 75px);
+}
+
+/* ___Social Media & Wrapper___ */
+.navbar .wrapper {
+    display: flex;
+    align-items: center;
+}
+
+.header .navbar .socialmedia {
+    flex-shrink: 0;
+}
+
+.header .navbar .socialmedia ul {
+    margin: 0;
+    display: flex;
+    list-style: none;
+}
+
+.header .navbar .socialmedia ul li a > i {
+    width: 30px;
+    height: 30px;
+    margin-right: 5px;
+    line-height: 30px;
+    border-radius: 50px;
+    text-align: center;
+    align-items: center;
+    font-size: 20px;
+    background-color: var(--social-bg);
+    transition: all 0.3s ease-in-out;
+    color: var(--primary-color);
+}
+
+/* Social Hover Effects */
+.header .navbar .socialmedia ul li a > i.fa-facebook-f:hover { background: rgb(0, 81, 255); color: white; transform: translateY(-2px); }
+.header .navbar .socialmedia ul li a > i.fa-whatsapp:hover { background: rgb(0, 166, 58); color: white; transform: translateY(-2px); }
+.header .navbar .socialmedia ul li a > i.fa-instagram:hover { background: linear-gradient(45deg, #feda75, #fa7e1e, #d62976, #962fbf, #4f5bd5); color: white; transform: translateY(-2px); }
+
+/* ___Hamburger Icon___ */
+.hamburger {
+    display: none; /* Hidden on Desktop by default */
+    cursor: pointer;
+    font-size: 24px;
+    color: var(--primary-color);
+    padding: 5px;
+    z-index: 1001; 
+}
+
+/* ============================
+PAGE SPECIFIC HEADER OVERRIDES
+=============================== */
+
+/* Blog Page Header */
+.header.blog-mode {
+    background-image: none !important;
+    background-color: transparent !important;
+    min-height: 0 !important;
+    height: auto !important;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+.header.blog-mode::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.8), transparent);
+    z-index: -1;
+    pointer-events: none;
+}
+
+/* Cars Page Header */
+.header.cars-mode {
+    background-image: none !important;
+    background-color: transparent !important;
+    min-height: auto !important;
+    height: auto !important;
+    padding-bottom: 20px;
+}
+
+/* About Page Header */
+.header.about-header {
+    background: transparent !important;
+    min-height: auto !important;
+    height: auto !important;
+    position: relative;
+    z-index: 100;
+}
+
+/* Review Page Header */
+.header.review-header {
+    min-height: auto;
+    height: auto;
+    background-image: none !important;
+    background-color: transparent !important;
+    position: relative;
+    z-index: 100;
+}
+
+/* Login Page Header */
+.header.login-header {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    background: transparent !important;
+    height: auto !important; 
+    min-height: auto !important;
+    z-index: 1000;
+}

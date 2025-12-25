@@ -1,8 +1,27 @@
-/* ___Reuse Variables___ */
+/* login-style.css */
+
+/* ___Reuse Variables & Theme Connection___ */
 :root {
-    --primary-color: #fff;
-    --secondary-color: #d43242;
-    --tertiary-color: #ff8938;
+    --glass-bg: rgba(255, 255, 255, 0.05);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --input-bg: rgba(0, 0, 0, 0.2);
+    --input-focus-bg: rgba(0, 0, 0, 0.4);
+    --video-overlay: rgba(10, 10, 30, 0.6);
+    --dropdown-bg: #26284e;
+    
+    --text-main: var(--primary-color); 
+    --text-muted: rgba(255, 255, 255, 0.5);
+}
+
+/* ___LIGHT MODE OVERRIDES___ */
+body.light-mode {
+    --glass-bg: rgba(255, 255, 255, 0.85); 
+    --glass-border: rgba(255, 255, 255, 0.8);
+    --input-bg: rgba(0, 0, 0, 0.05);
+    --input-focus-bg: rgba(0, 0, 0, 0.1);
+    --video-overlay: rgba(255, 255, 255, 0.3);
+    --dropdown-bg: #ffffff;
+    --text-muted: #666;
 }
 
 /* ___Body___*/
@@ -12,11 +31,19 @@ body {
     font-family: "Montserrat", sans-serif;
     color: var(--primary-color);
     min-height: 100vh;
+    
+    /* ___CENTERING FIX___ */
     display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centers form vertically since footer is gone */
     align-items: center;
-    justify-content: center;
-    overflow: hidden; 
+    
+    overflow-x: hidden; 
+    overflow-y: auto; 
+    transition: color 0.4s ease;
 }
+
+/* Header override moved to navbar.css */
 
 /* ___VIDEO BACKGROUND___ */
 .video-bg {
@@ -40,40 +67,35 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(10, 10, 30, 0.6); 
-    transition: background 0.3s ease;
-}
-
-/*___ NAVBAR ___*/
-.header.login-header {
-    position: absolute;
-    top: 0;
-    width: 100%;
-    background: transparent !important;
-    height: auto !important; 
-    min-height: auto !important;
-    z-index: 1000; 
+    background: var(--video-overlay);
+    transition: background 0.4s ease;
 }
 
 /* ___GLASS CONTAINER (FORM)___ */
 .glass-container {
-    background: rgba(255, 255, 255, 0.05);
+    background: var(--glass-bg);
     backdrop-filter: blur(15px);
     -webkit-backdrop-filter: blur(15px);
     width: 450px;
     padding: 2.5rem;
     border-radius: 20px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+    border: 1px solid var(--glass-border);
+    box-shadow: 0 25px 50px rgba(0,0,0,0.2);
     z-index: 10; 
-    margin-top: 80px; 
+    
+    /* ___MARGIN FIX FOR MOBILE___ */
+    margin-top: 100px; 
+    margin-bottom: 20px;
+    
+    transition: background 0.4s ease, border-color 0.4s ease;
+    
     /*___ Scroll Form ___*/
     max-height: 80vh;
     overflow-y: auto;
     scrollbar-width: none; 
 }
 
-/*___ Scroller hidden for chrome and edge browsers___*/
+/*___ Scroller hidden ___*/
 .glass-container::-webkit-scrollbar { 
     display: none; 
 }
@@ -82,14 +104,14 @@ body {
 .form-toggle {
     display: flex;
     margin-bottom: 25px;
-    border-bottom: 1px solid rgba(255,255,255,0.2);
+    border-bottom: 1px solid var(--text-muted);
 }
 
 .form-toggle button {
     flex: 1;
     background: transparent;
     border: none;
-    color: rgba(255,255,255,0.5);
+    color: var(--text-muted);
     font-size: 16px;
     padding-bottom: 10px;
     cursor: pointer;
@@ -107,6 +129,7 @@ body {
     font-size: 30px;
     margin-bottom: 5px;
     text-align: center;
+    color: var(--primary-color);
 }
 
 .user-form h2 span {
@@ -116,8 +139,9 @@ body {
 .user-form p {
     font-size: 13px;
     margin-bottom: 20px;
-    opacity: 0.7;
+    opacity: 0.8;
     text-align: center;
+    color: var(--primary-color);
 }
 
 .input-box {
@@ -136,11 +160,11 @@ body {
 
 .input-box input, select {
     width: 100%;
-    background: rgba(0,0,0,0.2);
-    border: 1px solid rgba(255,255,255,0.1);
-    padding: 12px 12px 12px 40px;            /*____ Icon Space ____ */
+    background: var(--input-bg);
+    border: 1px solid var(--glass-border);
+    padding: 12px 12px 12px 40px;
     border-radius: 50px;
-    color: white;
+    color: var(--primary-color);
     outline: none;
     transition: 0.3s;
     font-size: 14px;
@@ -148,10 +172,9 @@ body {
 
 .input-box input:focus, select:focus {
     border-color: var(--secondary-color);
-    background: rgba(0,0,0,0.4);
+    background: var(--input-focus-bg);
 }
 
-/*____ 2 Inputs in a Row ____ */
 .input-row {
     display: flex;
     gap: 10px;
@@ -160,10 +183,9 @@ body {
     flex: 1;
 }
 
-/*____ Dropdown Options for Gender ____ */
 select option {
-    background: #26284e;
-    color: white;
+    background: var(--dropdown-bg);
+    color: var(--primary-color);
 }
 
 .options {
@@ -171,12 +193,13 @@ select option {
     justify-content: space-between;
     font-size: 12px;
     margin-bottom: 20px;
-    color: rgba(255,255,255,0.7);
+    color: var(--primary-color);
+    opacity: 0.8;
     padding: 0 10px;
 }
 
 .options a {
-    color: white;
+    color: var(--primary-color);
     text-decoration: underline;
 }
 
@@ -205,6 +228,7 @@ select option {
 }
 .social-login p {
     margin-bottom: 10px;
+    color: var(--primary-color);
 }
 
 .social-icons a {
@@ -213,130 +237,15 @@ select option {
     align-items: center;
     width: 35px;
     height: 35px;
-    border: 1px solid rgba(255,255,255,0.2);
+    border: 1px solid var(--glass-border);
     border-radius: 50%;
-    color: white;
+    color: var(--primary-color);
     margin: 0 5px;
     transition: 0.3s;
 }
 
 .social-icons a:hover {
-    background: white;
-    color: #333;
-}
-
-/* ___Hamburger Icon___ */
-.hamburger {
-    display: none;
-    cursor: pointer;
-    font-size: 24px;
-    color: var(--primary-color);
-    z-index: 1001;
-}
-
-/* ___PINK MODE (Theme Logic)___ */
-body.pink-mode .glass-container {
-    background: rgba(255, 255, 255, 0.5); 
-    border: 1px solid rgba(255, 255, 255, 0.8);
-    box-shadow: 0 25px 50px rgba(0,0,0,0.1);
-}
-
-body.pink-mode .video-overlay {
-    background: rgba(214, 51, 132, 0.3); 
-}
-
-body.pink-mode .user-form h2, 
-body.pink-mode .user-form p,
-body.pink-mode .form-toggle button {
-    color: #26284e; 
-}
-
-body.pink-mode .form-toggle button.active {
-    color: #ff1493;
-    border-bottom-color: #ff1493;
-}
-
-body.pink-mode .input-box input, select {
-    background: rgba(255,255,255,0.7);
-    color: #333;
-    border-color: #fff;
-}
-body.pink-mode select option { background: #ffd1dc; color: #333; }
-body.pink-mode .options, body.pink-mode .options a { color: #333; }
-body.pink-mode .submit-btn { background: linear-gradient(90deg, #ff69b4, #ff1493); }
-body.pink-mode .hamburger { color: #26284e; }
-
-/* ___RESPONSIVENESS (Media Queries)___ */
-@media (max-width: 992px) {
-    /* Navbar Layout */
-    .header.login-header .navbar {
-        justify-content: space-between;
-        padding: 1rem 2rem;
-    }
-
-    /* Show Hamburger */
-    .hamburger { display: block; }
-
-    /* Hide Menu Logic */
-    .header .navbar .menu {
-        position: absolute;
-        top: 100%;
-        left: 0;
-        width: 100%;
-        background: rgba(20, 20, 40, 0.95);
-        backdrop-filter: blur(20px);
-        flex-direction: column;
-        align-items: center;
-        padding: 2rem 0;
-        opacity: 0;
-        transform: translateY(-20px);
-        pointer-events: none;
-        transition: all 0.4s ease;
-        z-index: 999;
-    }
-
-    /* Pink Mode Menu */
-    body.pink-mode .header .navbar .menu {
-        background: rgba(255, 255, 255, 0.95);
-        border-bottom: 1px solid rgba(0,0,0,0.1);
-    }
-
-    /* Active Menu */
-    .header .navbar .menu.open {
-        opacity: 1;
-        transform: translateY(0);
-        pointer-events: auto;
-    }
-
-    .header .navbar .menu ul {
-        flex-direction: column;
-        text-align: center;
-    }
-
-    .header .navbar .menu ul li {
-        margin: 15px 0;
-        display: block;
-    }
-
-    /* Keep toggle switch visible but hide other socials if crowded */
-    .header .navbar .socialmedia { display: flex; }
-    .header .navbar .socialmedia ul li a { display: none; } /* Hide icons */
-    .header .navbar .socialmedia ul li { margin: 0; } /* Reset margin */
-}
-
-@media (max-width: 500px) {
-    /* Adjust container width for phones */
-    .glass-container {
-        width: 90%;
-        padding: 1.5rem;
-        margin-top: 60px;
-    }
-
-    /* Stack input rows vertically on small screens */
-    .input-row {
-        flex-direction: column;
-        gap: 0;
-    }
-
-    .user-form h2 { font-size: 24px; }
+    background: var(--secondary-color);
+    color: white;
+    border-color: var(--secondary-color);
 }

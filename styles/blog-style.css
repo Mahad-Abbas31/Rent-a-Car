@@ -1,54 +1,39 @@
-/* ___Variables___ */
+/* blog-style.css */
+
+/* ___Reuse Variables & Theme Connection___ */
 :root {
-    --primary-color: #fff;
-    --secondary-color: #d43242;
-    --tertiary-color: #ff8938;
-    --bg-dark: #26284e;
+    --page-bg: #07081d;       
+    --img-shadow: rgba(29, 8, 8, 0.137);
+    --text-main: var(--primary-color); 
+    --text-sub: rgba(255,255,255,0.7);
 }
 
+/* ___LIGHT MODE OVERRIDES___ */
+body.light-mode {
+    --page-bg: #f4f6f8;
+    --img-shadow: rgba(0,0,0,0.1);
+    --text-sub: #555555;
+}
+
+/* ___Base Styling___ */
 body {
-    background-color: var(--bg-dark);
+    background-color: var(--page-bg);
     color: var(--primary-color);
     overflow-x: hidden;
-    transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-/* ___NAVBAR FIX FOR BLOG PAGE___ */
-.header.blog-mode {
-    background-image: none !important;
-    background-color: transparent !important;
-    min-height: 0 !important;
-    height: auto !important;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 1000;
-}
-
-/* Gradient overlay for navbar readability */
-.header.blog-mode::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(to bottom, rgba(0,0,0,0.8), transparent);
-    z-index: -1;
-    pointer-events: none;
+    transition: background-color 0.4s ease, color 0.4s ease;
 }
 
 /* ___HERO SECTION___ */
 .featured-hero {
     position: relative;
-    height: 90vh;
+    min-height: 90vh; 
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: flex-start;
     padding: 0 5%;
     margin-bottom: 5rem;
+    overflow: hidden;
 }
 
 .hero-bg {
@@ -64,6 +49,7 @@ body {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: center; 
 }
 
 .overlay-gradient {
@@ -72,7 +58,7 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, rgba(38,40,78,0.9) 0%, rgba(38,40,78,0.4) 50%, rgba(38,40,78,0) 100%);
+    background: linear-gradient(90deg, rgba(7, 8, 29, 0.9) 0%, rgba(7, 8, 29, 0.4) 50%, rgba(7, 8, 29, 0) 100%);
 }
 
 .hero-content {
@@ -94,11 +80,12 @@ body {
 }
 
 .hero-content h1 {
-    font-size: clamp(40px, 5vw, 80px);
+    font-size: clamp(32px, 5vw, 80px);
     line-height: 1.1;
     font-weight: 800;
     margin: 20px 0;
     text-transform: uppercase;
+    color: white; 
 }
 
 .hero-content h1 span {
@@ -107,11 +94,12 @@ body {
 }
 
 .hero-content p {
-    font-size: clamp(16px, 1.5vw, 20px);
+    font-size: clamp(15px, 1.5vw, 20px);
     margin-bottom: 40px;
     max-width: 600px;
     line-height: 1.6;
     opacity: 0.9;
+    color: white; 
 }
 
 .btn-read {
@@ -140,9 +128,10 @@ body {
     padding: 0 2rem;
 }
 
-.post-row {
+/* Fixed: Added .post-rowip selector to handle the typo in your HTML */
+.post-row, .post-rowip {
     display: flex;
-    align-items: flex-start; /* Changed from center to top align for text expansion */
+    align-items: flex-start; 
     gap: 4rem;
     margin-bottom: 8rem;
 }
@@ -158,7 +147,7 @@ body {
     height: 100%;
     object-fit: cover;
     border-radius: 4px;
-    box-shadow: 20px 20px 0px rgba(255,255,255,0.05);
+    box-shadow: 20px 20px 0px var(--img-shadow);
 }
 
 .post-text { flex: 1; }
@@ -177,23 +166,24 @@ body {
     margin-bottom: 20px;
     line-height: 1.2;
     font-weight: 700;
+    color: var(--primary-color);
 }
 
 .post-text p {
     font-size: 16px;
     line-height: 1.8;
-    color: rgba(255,255,255,0.7);
+    color: var(--text-sub);
     margin-bottom: 15px;
 }
 
 /* Hidden Text Logic */
 .hidden-content {
-    display: none; /* Hidden by default */
+    display: none; 
     padding-top: 10px;
-    border-top: 1px solid rgba(255,255,255,0.1);
+    border-top: 1px solid var(--border-color);
 }
 
-/* Button style reset to look like link */
+/* Button style reset */
 button.link-arrow {
     background: none;
     border: none;
@@ -214,105 +204,13 @@ button.link-arrow i {
 }
 
 /* ___REVERSED ROW___ */
-.post-row.reversed {
+/* Fixed: Added .post-rowip.reversed selector */
+.post-row.reversed, .post-rowip.reversed {
     flex-direction: row-reverse;
     text-align: right;
 }
 
-.post-row.reversed .post-image img {
-    box-shadow: -20px 20px 0px rgba(255,255,255,0.05);
-}
-
-/* ___Hamburger Icon___ */
-.hamburger {
-    display: none;
-    cursor: pointer;
-    font-size: 24px;
-    color: var(--primary-color);
-    z-index: 1001;
-}
-
-/* ___PINK MODE___ */
-body.pink-mode {
-    background-color: #fff0f5;
-    color: #26284e;
-}
-
-/* Fix Hero Text stroke in light mode */
-body.pink-mode .hero-content h1 span {
-    -webkit-text-stroke: 1px #d43242;
-    color: transparent;
-}
-
-body.pink-mode .post-text p { color: #555; }
-body.pink-mode .link-arrow { color: #26284e; }
-body.pink-mode .post-image img { box-shadow: 20px 20px 0px rgba(0,0,0,0.1); }
-body.pink-mode .post-row.reversed .post-image img { box-shadow: -20px 20px 0px rgba(0,0,0,0.1); }
-body.pink-mode .hamburger { color: #26284e; }
-
-/* ___RESPONSIVE___ */
-@media (max-width: 992px) {
-    /* Navbar Layout */
-    .header .navbar {
-        justify-content: space-between;
-        padding: 1rem 2rem;
-    }
-
-    /* Show Hamburger */
-    .hamburger { display: block; }
-
-    /* Hide Menu Logic */
-    .header .navbar .menu {
-        position: absolute;
-        top: 100%;
-        left: 0;
-        width: 100%;
-        background: rgba(20, 20, 40, 0.95);
-        backdrop-filter: blur(20px);
-        flex-direction: column;
-        align-items: center;
-        padding: 2rem 0;
-        opacity: 0;
-        transform: translateY(-20px);
-        pointer-events: none;
-        transition: all 0.4s ease;
-        z-index: 999;
-    }
-
-    /* Pink Mode Menu Background */
-    body.pink-mode .header .navbar .menu {
-        background: rgba(255, 255, 255, 0.95);
-        border-bottom: 1px solid rgba(0,0,0,0.1);
-    }
-
-    /* Active Menu */
-    .header .navbar .menu.open {
-        opacity: 1;
-        transform: translateY(0);
-        pointer-events: auto;
-    }
-
-    .header .navbar .menu ul {
-        flex-direction: column;
-        text-align: center;
-    }
-
-    .header .navbar .menu ul li {
-        margin: 15px 0;
-        display: block;
-    }
-
-    /* Hide Social Icons in Navbar on mobile */
-    .header .navbar .socialmedia { display: none; }
-}
-
-@media (max-width: 900px) {
-    .post-row, .post-row.reversed {
-        flex-direction: column;
-        text-align: left;
-        gap: 2rem;
-    }
-    .post-image { width: 100%; height: 300px; }
-    .post-row.reversed .post-image img { box-shadow: 20px 20px 0px rgba(255,255,255,0.05); }
-    body.pink-mode .post-row.reversed .post-image img { box-shadow: 20px 20px 0px rgba(0,0,0,0.1); }
+.post-row.reversed .post-image img, 
+.post-rowip.reversed .post-image img {
+    box-shadow: -20px 20px 0px var(--img-shadow);
 }

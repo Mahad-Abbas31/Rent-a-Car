@@ -5,13 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <!--____STYLESHEETS____-->
+    <link rel="stylesheet" href="styles/footer.css">
+    <link rel="stylesheet" href="styles/responsive.css">
+    <link rel="stylesheet" href="styles/navbar.css">
     <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/theme.css">
     <link rel="stylesheet" href="styles/login-style.css">
-    <link rel="stylesheet" href="styles/pink.css">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
-    
-    <!--____PAGE TAB TITLE and ICON____-->
+
+    <!-- ____Logo and Tab Name____ -->
+    <link rel="icon" href="/assets/doc.png" type="image/png">
     <title>Rent a Car - Login</title>
 </head>
 <body>
@@ -19,12 +23,14 @@
     <!--____Header____-->
     <div class="header login-header">
 
-        <!--____NavBar____-->
+                <!--____NavBar____-->
         <div class="navbar">
 
             <!--____Logo____-->
-            <div class="logo"><a href="index.html">Rent a Car <span>.</span></a></div>
-            
+            <div class="logo">
+                <a href="index.html">Rent a Car <span>.</span></a>
+            </div>
+
             <!--____Responsive Menu____-->
             <div class="hamburger" onclick="toggleMenu()">
                 <i class="fa-solid fa-bars"></i>
@@ -41,24 +47,49 @@
                     <li><a href="login.html" class="active">Login</a></li>
                 </ul>
             </div>
-            
-            <!--____Social Media____-->
-            <div class="socialmedia">
-                <ul>
-                    <li><a href="https://www.facebook.com/WebDevByMahad/" target="_blank"><i class="fa-brands fa-facebook-f"></i></a></li>
-                    <li><a href="https://www.instagram.com/webdevbymahad/" target="_blank"><i class="fa-brands fa-instagram"></i></a></li>
-                    <li><a href="https://wa.me/923206806396" target="_blank"><i class="fa-brands fa-whatsapp"></i></a></li>
 
-                    <!--____Pink Theme Toggle Button____-->
-                    <li style="display: flex; align-items: center; margin-left: 10px;">
-                        <label class="switch">
-                            <input type="checkbox" onclick="togglePinkMode()">
-                            <span class="slider round"></span>
-                        </label>
-                    </li>
-                </ul>
+            <div class="wrapper">
+
+                <!--____Social Media____-->
+                <div class="socialmedia">
+                    <ul>
+                        <li><a href="https://www.facebook.com/WebDevByMahad/" target="_blank"><i
+                                    class="fa-brands fa-facebook-f"></i></a></li>
+                        <li><a href="https://www.instagram.com/webdevbymahad/" target="_blank"><i
+                                    class="fa-brands fa-instagram"></i></a></li>
+                        <li><a href="https://wa.me/923206806396" target="_blank"><i
+                                    class="fa-brands fa-whatsapp"></i></a>
+                        </li>
+
+                    </ul>
+                </div>
+
+                <!--____Theme Toggle____-->
+                <div class="theme-toggle-wrapper" style="margin-left: 20px; display: flex; align-items: center;">
+                    <label class="theme-switch">
+                        <input type="checkbox" class="theme-switch__checkbox" id="theme-toggle">
+                        <div class="theme-switch__container">
+                            <div class="theme-switch__clouds"></div>
+                            <div class="theme-switch__stars-container">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 144 55" fill="none">...</svg>
+                            </div>
+                            <div class="theme-switch__circle-container">
+                                <div class="theme-switch__sun-moon-container">
+                                    <div class="theme-switch__moon">
+                                        <div class="theme-switch__spot"></div>
+                                        <div class="theme-switch__spot"></div>
+                                        <div class="theme-switch__spot"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </label>
+                </div>
+
             </div>
+
         </div>
+
     </div>
 
     <!--____BackGround Video____-->
@@ -191,8 +222,12 @@
         </form>
         
     </div>
+
+    <!--____ JavaScript Resources ____-->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.js"></script>
     
-    <!--____JavaScript____-->
+    <!--____ JavaScript Writing____-->
     <script src="script.js"></script>
 
 </body>

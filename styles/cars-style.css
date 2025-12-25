@@ -7,12 +7,10 @@
     --card-bg: #f56d6d;
     --price-box-bg: rgba(0,0,0,0.2);
     --shadow-color: rgba(0,0,0,0.2);
-    /* Inherit global theme colors */
     --text-main: var(--primary-color); 
 }
 
 /* 2. LIGHT MODE OVERRIDES */
-/* This connects to the JS toggle class 'light-mode' */
 body.light-mode {
     --page-bg: #f4f6f8;       /* Light Gray Page */
     --card-bg: #ffffff;       /* White Cards */
@@ -28,14 +26,7 @@ body {
     transition: background-color 0.4s ease, color 0.4s ease;
 }
 
-/* ___Header Fix___ */
-.header.cars-mode {
-    background-image: none !important;
-    background-color: transparent !important;
-    min-height: auto !important;
-    height: auto !important;
-    padding-bottom: 20px;
-}
+/* Header override moved to navbar.css */
 
 /* ___Page Title Section___ */
 .page-header {
@@ -61,10 +52,7 @@ body {
     letter-spacing: 1px;
 }
 
-/* _____________________________________________ */
-/* ________TOP PICKS 3D SECTION (NEW)___________ */
-/* _____________________________________________ */
-
+/* ________TOP PICKS 3D SECTION___________ */
 .top-picks-container {
     max-width: 1400px;
     margin: 0 auto 6rem auto;
@@ -76,13 +64,11 @@ body {
     margin-top: 20px;
 }
 
-/* The Wrapper handles the layout */
 .top-cards-wrapper {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-    /* Large gap ensures the sliding inner page doesn't overlap the neighbor */
     gap: 8rem; 
     margin-top: 3rem;
 }
@@ -91,9 +77,9 @@ body {
 .book-card {
     position: relative;
     border-radius: 10px;
-    width: 280px;   /* Adjusted width for car images */
-    height: 380px;  /* Adjusted height */
-    background-color: var(--card-bg); /* Dynamic Theme Color */
+    width: 280px;
+    height: 380px; 
+    background-color: var(--card-bg); 
     box-shadow: 0 10px 20px var(--shadow-color);
     transform: preserve-3d;
     perspective: 2000px;
@@ -174,14 +160,13 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Ensures landscape car images fill vertical card */
+    object-fit: cover;
     z-index: 1;
 }
 
 .cover-text {
     position: relative;
     z-index: 2;
-    /* Gradient to make text readable over image */
     background: linear-gradient(to top, rgba(0,0,0,0.95) 10%, transparent 100%);
     width: 100%;
     padding: 20px;
@@ -205,11 +190,11 @@ body {
 
 /* ___The Sliding Inner Page___ */
 .book-inner {
-    background-color: var(--secondary-color); /* Brand Red */
+    background-color: var(--secondary-color);
     display: flex;
     align-items: center;
     justify-content: center;
-    transform-origin: 100%; /* Important: Hinges from right to slide out */
+    transform-origin: 100%;
     z-index: 5;
 }
 
@@ -227,30 +212,21 @@ body {
 }
 
 /* ________3D HOVER ANIMATIONS________ */
-
-/* 1. Rotate Cover Open */
 .book-card:hover .book-cover {
     transform: rotateY(-85deg); 
     box-shadow: 5px 5px 15px rgba(0,0,0,0.1);
 }
 
-/* 2. Slide Inner Page Out */
 .book-card:hover .book-inner {
-    /* TranslateX moves it to the right */
     transform: rotateZ(20deg) translateX(200px); 
     box-shadow: -2px 2px 10px rgba(0,0,0,0.2);
 }
 
-/* 3. Tilt Container */
 .book-card:hover {
     transform: rotateZ(-3deg);
 }
 
-
-/* _____________________________________________ */
-/* ________STANDARD CAR GRID (Existing)_________ */
-/* _____________________________________________ */
-
+/* ________STANDARD CAR GRID_________ */
 .car-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -405,95 +381,4 @@ body {
     background: var(--secondary-color);
     color: white;
     box-shadow: 0 5px 15px rgba(212, 50, 66, 0.4);
-}
-
-/* Hamburger Icon Visibility */
-.hamburger {
-    display: none;
-    cursor: pointer;
-    font-size: 24px;
-    color: var(--primary-color);
-    z-index: 1001;
-}
-
-/* ___RESPONSIVENESS___ */
-@media (max-width: 992px) {
-    /* Navbar Layout */
-    .header .navbar {
-        justify-content: space-between;
-        padding: 1rem 2rem;
-    }
-
-    /* Show Hamburger */
-    .hamburger { display: block; }
-
-    /* Hide Menu Logic */
-    .header .navbar .menu {
-        position: absolute;
-        top: 100%;
-        left: 0;
-        width: 100%;
-        background: var(--page-bg); /* Dynamic */
-        backdrop-filter: blur(20px);
-        flex-direction: column;
-        align-items: center;
-        padding: 2rem 0;
-        opacity: 0;
-        transform: translateY(-20px);
-        pointer-events: none;
-        transition: all 0.4s ease;
-        z-index: 999;
-        border-bottom: 1px solid var(--border-color);
-    }
-
-    /* Active Menu */
-    .header .navbar .menu.open {
-        opacity: 1;
-        transform: translateY(0);
-        pointer-events: auto;
-    }
-
-    .header .navbar .menu ul {
-        flex-direction: column;
-        text-align: center;
-    }
-
-    .header .navbar .menu ul li {
-        margin: 15px 0;
-        display: block;
-    }
-
-    .header .navbar .socialmedia {
-        display: none;
-    }
-
-    /* Adjust Top Picks Gap for Tablet */
-    .top-cards-wrapper {
-        gap: 2rem;
-    }
-    
-    /* Reduce slide out distance on smaller screens so it fits */
-    .book-card:hover .book-inner {
-        transform: rotateZ(3deg) translateX(120px); 
-    }
-}
-
-@media (max-width: 600px) {
-    .car-grid {
-        grid-template-columns: 1fr; 
-        padding: 0 1.5rem;
-    }
-    
-    .page-header h1 { font-size: 30px; }
-
-    /* Stack Top Picks vertically on mobile */
-    .top-cards-wrapper {
-        flex-direction: column;
-        gap: 3rem;
-    }
-    
-    /* On Mobile, just slide a little bit */
-    .book-card:hover .book-inner {
-        transform: rotateZ(2deg) translateX(60px); 
-    }
 }

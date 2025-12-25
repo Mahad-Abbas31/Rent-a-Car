@@ -1,29 +1,35 @@
-/* ___Reuse Variables___ */
+/* review-style.css */
+
+/* ___Reuse Variables & Theme Connection___ */
 :root {
-    --primary-color: #fff;
-    --secondary-color: #d43242;
-    --tertiary-color: #ff8938;
-    --bg-dark: #26284e;
-    --card-bg: #2f325e; 
+    /* Define defaults for Review Page (Dark Mode) */
+    --page-bg: #07081d;       
+    --card-bg: rgba(255, 255, 255, 0.03);
+    --form-bg: rgba(255,255,255,0.03);
+    --input-bg: rgba(255,255,255,0.05);
+    
+    /* Inherit global theme colors from theme.css */
+    --text-main: var(--primary-color); 
+    --text-sub: var(--text-muted);
+}
+
+/* ___LIGHT MODE OVERRIDES___ */
+body.light-mode {
+    --page-bg: #f4f6f8;       /* Light Gray Page */
+    --card-bg: #ffffff;       /* White Cards */
+    --form-bg: #ffffff;       /* White Form */
+    --input-bg: rgba(0,0,0,0.05); /* Light gray inputs */
 }
 
 /* ___Base Styling___ */
 body {
-    background-color: var(--bg-dark);
-    color: var(--primary-color);
+    background-color: var(--page-bg); /* Uses dynamic variable */
+    color: var(--primary-color);      /* From theme.css */
     overflow-x: hidden;
-    transition: background-color 0.3s ease, color 0.3s ease;
+    transition: background-color 0.4s ease, color 0.4s ease;
 }
 
-/* ___Header Overrides___ */
-.header.review-header {
-    min-height: auto;
-    height: auto;
-    background-image: none !important;
-    background-color: transparent !important;
-    position: relative;
-    z-index: 100;
-}
+/* Header override moved to navbar.css */
 
 /* ___Trust Hero Section___ */
 .trust-hero {
@@ -42,7 +48,7 @@ body {
     font-weight: 900;
     line-height: 1;
     color: var(--secondary-color);
-    text-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    text-shadow: 0 10px 30px rgba(0,0,0,0.1);
 }
 
 .trust-badge .stars {
@@ -68,8 +74,6 @@ body {
 
 .trust-hero h1 span {
     color: var(--secondary-color);
-    -webkit-text-stroke: 1px var(--secondary-color);
-    color: transparent;
 }
 
 /* ___Reviews Grid___ */
@@ -85,20 +89,20 @@ body {
 }
 
 .review-card {
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    background: var(--card-bg); /* Dynamic */
+    border: 1px solid var(--border-color); /* From theme.css */
     border-radius: 20px;
     padding: 2rem;
     transition: all 0.4s ease;
     position: relative;
     overflow: hidden;
-    backdrop-filter: blur(10px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
 }
 
 .review-card:hover {
     transform: translateY(-10px);
     border-color: var(--secondary-color);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
 }
 
 /* Card Internals */
@@ -158,24 +162,24 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-top: 1px solid var(--border-color);
     padding-top: 15px;
 }
 
 .card-footer span {
     font-size: 12px;
-    color: var(--primary-color);
-    opacity: 0.5;
+    color: var(--text-muted); /* Uses Theme Variable */
+    opacity: 0.7;
 }
 
 .card-footer i {
     font-size: 24px;
-    color: rgba(255, 255, 255, 0.1);
+    color: var(--border-color);
 }
 
 /* Highlight Card */
 .review-card.highlight {
-    background: linear-gradient(145deg, rgba(212, 50, 66, 0.1), transparent);
+    background: linear-gradient(145deg, rgba(212, 50, 66, 0.05), transparent);
     border-color: rgba(212, 50, 66, 0.3);
 }
 
@@ -188,10 +192,11 @@ body {
 
 .form-container {
     display: flex;
-    background: rgba(255,255,255,0.03);
+    background: var(--form-bg); /* Dynamic */
     border-radius: 30px;
     overflow: hidden;
-    border: 1px solid rgba(255,255,255,0.05);
+    border: 1px solid var(--border-color);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
 }
 
 .form-left {
@@ -225,7 +230,7 @@ body {
 }
 
 .form-left h2 span {
-    color: var(--background-color); 
+    color: #26284e; 
     font-weight: 800;
 }
 
@@ -245,8 +250,8 @@ body {
 
 input, textarea {
     width: 100%;
-    background: rgba(255,255,255,0.05);
-    border: 1px solid rgba(255,255,255,0.1);
+    background: var(--input-bg); /* Dynamic */
+    border: 1px solid var(--border-color);
     padding: 15px;
     color: var(--primary-color);
     border-radius: 10px;
@@ -256,7 +261,7 @@ input, textarea {
 
 input:focus, textarea:focus {
     border-color: var(--secondary-color);
-    background: rgba(255,255,255,0.1);
+    background: rgba(128,128,128,0.1); /* Slight tint on focus */
 }
 
 textarea {
@@ -277,12 +282,14 @@ textarea {
 
 .star-widget label {
     font-size: 25px;
-    color: rgba(255,255,255,0.2);
+    color: var(--border-color);
+    filter: brightness(0.8); 
     padding: 0 5px;
     cursor: pointer;
     transition: 0.2s;
 }
 
+/* Hover & Checked States for Stars */
 .star-widget input:not(:checked) ~ label:hover,
 .star-widget input:not(:checked) ~ label:hover ~ label { color: #fd4; }
 
@@ -303,121 +310,3 @@ button {
 }
 
 button:hover { transform: scale(1.05); }
-
-/* ___Hamburger Icon___ */
-.hamburger {
-    display: none;
-    cursor: pointer;
-    font-size: 24px;
-    color: var(--primary-color);
-    z-index: 1001;
-}
-
-/* ___PINK MODE (Theme Logic)___ */
-body.pink-mode {
-    background-color: #fff0f5; /* Light Pink Bg */
-    color: #26284e; /* Dark Text */
-}
-
-/* Override Review Cards for Pink Mode */
-body.pink-mode .review-card {
-    background: #ffffff;
-    border: 1px solid rgba(0,0,0,0.1);
-    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
-}
-
-body.pink-mode .profile-info h3,
-body.pink-mode .feedback,
-body.pink-mode .card-footer span,
-body.pink-mode .trust-badge p {
-    color: #26284e;
-}
-
-body.pink-mode .trust-hero h1 span {
-    -webkit-text-stroke: 1px #d43242;
-    color: transparent;
-}
-
-body.pink-mode .form-container {
-    background: white;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
-}
-
-body.pink-mode input, 
-body.pink-mode textarea {
-    background: #f8f8f8;
-    color: #26284e;
-    border-color: #eee;
-}
-
-body.pink-mode .star-widget label { color: #ddd; }
-body.pink-mode .hamburger { color: #26284e; }
-body.pink-mode .socials a { color: #888; }
-body.pink-mode .socials a:hover { color: #26284e; }
-
-/* ___RESPONSIVENESS___ */
-@media (max-width: 992px) {
-    /* Navbar Layout */
-    .header .navbar {
-        justify-content: space-between;
-        padding: 1rem 2rem;
-    }
-
-    /* Show Hamburger */
-    .hamburger { display: block; }
-
-    /* Hide Menu Logic */
-    .header .navbar .menu {
-        position: absolute;
-        top: 100%;
-        left: 0;
-        width: 100%;
-        background: rgba(20, 20, 40, 0.95);
-        backdrop-filter: blur(20px);
-        flex-direction: column;
-        align-items: center;
-        padding: 2rem 0;
-        opacity: 0;
-        transform: translateY(-20px);
-        pointer-events: none;
-        transition: all 0.4s ease;
-        z-index: 999;
-    }
-
-    /* Pink Mode Menu Background */
-    body.pink-mode .header .navbar .menu {
-        background: rgba(255, 255, 255, 0.95);
-        border-bottom: 1px solid rgba(0,0,0,0.1);
-    }
-
-    /* Active Menu */
-    .header .navbar .menu.open {
-        opacity: 1;
-        transform: translateY(0);
-        pointer-events: auto;
-    }
-
-    .header .navbar .menu ul {
-        flex-direction: column;
-        text-align: center;
-    }
-
-    .header .navbar .menu ul li {
-        margin: 15px 0;
-        display: block;
-    }
-
-    /* Hide Social Icons in Navbar on mobile */
-    .header .navbar .socialmedia { display: none; }
-}
-
-@media (max-width: 900px) {
-    .form-container { flex-direction: column; }
-    .form-left { padding: 2rem; }
-}
-
-@media (max-width: 600px) {
-    .reviews-grid { grid-template-columns: 1fr; }
-    .input-group { flex-direction: column; }
-    .trust-hero h1 { font-size: 35px; }
-}

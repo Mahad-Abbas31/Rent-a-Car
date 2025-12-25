@@ -1,34 +1,118 @@
+/* ======================================================
+GLOBAL RESPONSIVE STYLES (Navbar & Footer)
+========================================================= */
+
 /* ____Tablet & Large Mobile (max-width: 1024px)____ */
 @media screen and (max-width: 1024px) {
     .header {
-        /* CHANGED: min-height allows the bg to grow if content expands */
         min-height: 100vh;
         height: auto;
         background-position: center;
         background-size: cover;
     }
-
     .header > .navbar > .menu > ul > li {
         margin-right: 15px;
     }
+}
 
-    /* ___Hero Section Logic___ */
+/* ____Tablet Portrait / Generic Mobile Navbar (max-width: 992px)____*/
+@media screen and (max-width: 992px) {
+    .header .navbar, 
+    .header.login-header .navbar {
+        justify-content: space-between;
+        padding: 1rem 2rem;
+    }
+
+    /* Show Hamburger */
+    .hamburger { display: block !important; }
+
+    /* Hide Menu by Default */
+    .header .navbar .menu {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: var(--nav-bg); /* Use theme variable */
+        /* Fallback for specific pages if needed, otherwise variable handles it */
+        backdrop-filter: blur(20px);
+        flex-direction: column;
+        align-items: center;
+        padding: 2rem 0;
+        border-top: 1px solid var(--border-color);
+        border-bottom: 1px solid var(--border-color);
+        opacity: 0;
+        transform: translateY(-20px);
+        pointer-events: none;
+        transition: all 0.4s ease;
+        z-index: 999;
+    }
+    
+    /* Login Page specific menu background override if using dropdown-bg */
+    .header.login-header .navbar .menu {
+        background: var(--dropdown-bg);
+    }
+
+    /* Active Class (JS Toggled) */
+    .header .navbar .menu.open {
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: auto;
+    }
+
+    .header .navbar .menu ul {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .header .navbar .menu ul li {
+        display: block;
+        margin: 15px 0;
+    }
+
+    /* Hide Social Media in Navbar on Mobile (Except maybe login page) */
+    .header .navbar .socialmedia { display: none; }
+    /* For Login page, we might want to keep the toggle visible, adjust as needed */
+    .header.login-header .navbar .socialmedia { display: flex; }
+    .header.login-header .navbar .socialmedia ul li a { display: none; } 
+    .header.login-header .navbar .socialmedia ul li { margin: 0; }
+
+    /* Footer Stacking */
+    .footer-container {
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+    }
+}
+
+/* ____Footer Mobile (max-width: 576px)____ */
+@media (max-width: 576px) {
+    .footer-container {
+        grid-template-columns: 1fr;
+    }
+    .newsletter input {
+        font-size: 16px; 
+        height: 50px;    
+    }
+    .newsletter button {
+        width: 40px;
+        height: 40px;
+    }
+}
+
+/* ======================================================
+HOME PAGE RESPONSIVE
+========================================================= */
+@media screen and (max-width: 1024px) {
     .hero {
-        /* Ensures the container respects the content height */
         height: auto;
         padding-bottom: 5rem;
     }
-
     .hero > .row {
-        /* Force stacking: Text Top, Car Bottom */
         flex-direction: column; 
         align-items: center;
         text-align: center;
         gap: 3rem;
     }
-
     .hero > .row > .leftsection {
-        /* Reset width and align center */
         flex: 0 0 auto;
         width: 100%;
         max-width: 800px;
@@ -37,246 +121,175 @@
         flex-direction: column;
         align-items: center; 
     }
-
     .hero > .row > .leftsection > .content > h2 {
-        font-size: clamp(50px, 8vw, 80px); /* Adjusted for tablet */
+        font-size: clamp(50px, 8vw, 80px);
     }
-
     .hero > .row > .leftsection > .content > p {
         margin: 20px auto;
         max-width: 700px;
         text-align: center;
     }
-
-    .hero > .row > .leftsection > .discover-btn {
-        margin-top: 30px;
-    }
-
     .hero .info {
         justify-content: center;
         gap: 4rem;
     }
-
     .hero .rightsection {
         width: 100%;
-        max-width: 700px; /* Limits car size on tablet so it doesn't look huge */
+        max-width: 700px;
         margin-top: 2rem;
     }
-
     .location-container {
         flex-direction: column;
     }
-    
     .map-frame { height: 300px; }
-
-    /* ___Slick Slider Arrows___ */
-    /* Pulling arrows closer to the car so they don't get cut off */
-    .slick-prev {
-        left: -40px !important;
-    }
-
-    .slick-next {
-        right: -40px !important;
-    }
+    /* Slider Arrows */
+    .slick-prev { left: -40px !important; }
+    .slick-next { right: -40px !important; }
 }
 
-/* ____Tablet Portrait (max-width: 992px)____*/
 @media screen and (max-width: 992px) {
-    
-    .header > .navbar {
-        justify-content: space-between;
-        padding: 1rem 2rem;
-    }
-
-    /* ___HAMBURGER LOGIC START___ */
-    .hamburger {
-        display: block !important;
-    }
-
-    /* Hide Menu by Default on Mobile/Tablet */
-    .header > .navbar > .menu {
-        position: absolute;
-        top: 100%;
-        left: 0;
-        width: 100%;
-        background: rgba(20, 20, 40, 0.95); /* Dark background */
-        backdrop-filter: blur(20px);
-        flex-direction: column;
-        align-items: center;
-        padding: 2rem 0;
-        border-top: 1px solid rgba(255,255,255,0.1);
-        border-bottom: 1px solid rgba(255,255,255,0.1);
-        
-        opacity: 0;
-        transform: translateY(-20px);
-        pointer-events: none;
-        transition: all 0.4s ease;
-    }
-
-    /* Active class toggled by JS */
-    .header > .navbar > .menu.open {
-        opacity: 1;
-        transform: translateY(0);
-        pointer-events: auto;
-    }
-
-    .header > .navbar > .menu > ul {
-        flex-direction: column;
-        text-align: center;
-    }
-
-    .header > .navbar > .menu > ul > li {
-        display: block;
-        margin: 15px 0;
-    }
-
-    .header > .navbar > .menu > ul > li > a {
-        font-size: 20px;
-        display: block;
-    }
-
-    /* Hide Social Media in Navbar to save space */
-    .header > .navbar > .socialmedia {
-        display: none; 
-    }
-    /* ___HAMBURGER LOGIC END___ */
-
     .hero > .row > .leftsection > .content > h2 {
         font-size: 50px;
         letter-spacing: 3px;
     }
-
-    .hero > .row > .leftsection > .content > h2 > span {
-        letter-spacing: 5px;
-    }
-
-    /* Arrows move even closer for smaller tablets */
-    .slick-prev {
-        left: -20px !important;
-        z-index: 100;
-    }
-
-    .slick-next {
-        right: -20px !important;
-        z-index: 100;
-    }
+    .slick-prev { left: -20px !important; z-index: 100; }
+    .slick-next { right: -20px !important; z-index: 100; }
 }
 
-/*____Mobile Landscape (max-width: 640px)____*/
 @media screen and (max-width: 640px) {
-    .header {
-        background-size: cover;
-    }
-
-    .hero > .row > .leftsection > .content > h2 {
-        font-size: 40px;
-    }
-
-    /* Simplify the menu for mobile */
-    .header > .navbar > .menu > ul > li {
-        margin: 5px 8px;
-    }
-
+    .hero { padding-top: 2rem; padding-bottom: 0; }
+    .hero > .row > .leftsection > .content > h2 { font-size: 40px; }
     .hero .rightsection {
-        padding: 0 20px; /* Adds safety padding so car doesn't touch edges */
+        padding: 0 20px;
+        flex: 1 1 150px;
     }
-
-    /* Hide arrows on mobile if they interfere, or make them small */
-    .slick-next:before, .slick-prev:before {
-        font-size: 30px !important;
-    }
-    
-    .location-section {
-        padding: 2rem 1.5rem 4rem;
-    }
+    .location-section { padding: 2rem 1.5rem 4rem; }
 }
 
-/*____Mobile Portrait (max-width: 480px)____*/
 @media screen and (max-width: 480px) {
-    
-    .header > .navbar {
+    .location-container {
         padding: 1rem;
     }
-
-    .header > .navbar > .logo > a {
-        font-size: 22px;
-    }
-
-    .hero > .row > .leftsection > .content > h2 {
-        font-size: 36px;
-        line-height: 1.2;
-    }
-
-    .hero > .row > .leftsection > .content > p {
-        font-size: 14px;
-        line-height: 1.5;
-    }
-
-    .discover-btn {
-        width: 100%; /* Full width button on mobile looks modern */
-        justify-content: center;
-        max-width: 300px;
-    }
-    
+    .detail-box{ padding: 1rem; }
+    .hero > .row > .leftsection > .content > h2 { font-size: 36px; }
+    .hero > .row > .leftsection > .content > p { font-size: 14px; }
     .map-frame { height: 250px; }
-
-    /* Adjust dots */
-    .slick-dots {
-        bottom: -40px !important;
-    }
-    
-    /* Move arrows to bottom or hide them */
-    .slick-prev, .slick-next {
-        top: 110% !important; /* Move arrows below the car */
-    }
-    
+    .slick-dots { bottom: -40px !important; }
+    .slick-prev, .slick-next { top: 110% !important; }
     .slick-prev { left: 30% !important; }
     .slick-next { right: 30% !important; }
 }
 
-/*____Small Mobile (max-width: 375px)____*/
-@media screen and (max-width: 375px) {
-    .hero > .row > .leftsection > .content > h2 {
-        font-size: 30px;
-    }
-    
-    .hero .info {
-        flex-direction: row; /* Keep them side by side if they fit, or stack */
-        gap: 1rem;
-        flex-wrap: wrap;
-    }
-}
-
-/*____Extra Small Mobile (max-width: 320px)____*/
-@media screen and (max-width: 320px) {
-    .header > .navbar > .logo > a {
-        font-size: 18px;
-    }
-
-    .header > .navbar > .menu > ul > li > a {
-        font-size: 11px;
-    }
-
-    .hero > .row > .leftsection > .content > h2 {
-        font-size: 26px;
-    }
-}
-
-/* ___Footer Responsive___ */
-    .footer-content {
-        flex-direction: column;
-        text-align: center;
+/* ======================================================
+CARS PAGE RESPONSIVE
+========================================================= */
+@media (max-width: 992px) {
+    .top-cards-wrapper {
         gap: 2rem;
     }
-    
-    .footer-brand p {
-        margin: 10px auto; /* Center paragraph */
+    .book-card:hover .book-inner {
+        transform: rotateZ(3deg) translateX(120px); 
     }
+}
 
-    .footer-social ul {
-        justify-content: center; /* Center icons */
+@media (max-width: 600px) {
+    .car-grid {
+        grid-template-columns: 1fr; 
+        padding: 0 1.5rem;
     }
+    .page-header h1 { font-size: 30px; }
+    .top-cards-wrapper {
+        flex-direction: column;
+        gap: 3rem;
+    }
+    .book-card:hover .book-inner {
+        transform: rotateZ(2deg) translateX(60px); 
+    }
+}
+
+/* ======================================================
+ABOUT PAGE RESPONSIVE
+========================================================= */
+@media (max-width: 900px) {
+    .about-hero {
+        flex-direction: column-reverse;
+        text-align: center;
+    }
+    .hero-text p { margin: 0 auto; }
+    .story-container { flex-direction: column; }
+    .hero-image img { height: 300px; }
+    .stats-bar { flex-direction: column; gap: 2rem; }
+}
+
+/* ======================================================
+REVIEW PAGE RESPONSIVE
+========================================================= */
+@media (max-width: 900px) {
+    .form-container { flex-direction: column; }
+    .form-left { padding: 2rem; }
+}
+
+@media (max-width: 600px) {
+    .reviews-grid { grid-template-columns: 1fr; }
+    .input-group { flex-direction: column; }
+    .trust-hero h1 { font-size: 35px; }
+}
+
+/* ======================================================
+BLOG PAGE RESPONSIVE
+========================================================= */
+
+/* ___RESPONSIVE RULES (Moved here)___ */
+@media (max-width: 992px) {
+    /* Hero Gradient darker on tablet/mobile */
+    .overlay-gradient {
+        background: linear-gradient(180deg, rgba(7, 8, 29, 0.8) 0%, rgba(7, 8, 29, 0.6) 100%);
+    }
+}
+
+@media (max-width: 768px) {
+    .featured-hero {
+        min-height: 90vh; 
+        height: auto;
+        padding: 120px 20px 60px 20px; 
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+    .hero-content {
+        margin-top: 100px;
+        width: 100%;
+    }
+    .hero-content p {
+        margin: 0 auto 30px auto; 
+    }
+}
+
+@media (max-width: 900px) {
+    .post-row, .post-row.reversed,
+    .post-rowip, .post-rowip.reversed {
+        flex-direction: column;
+        text-align: left;
+        gap: 2rem;
+    }
+    .post-image { width: 100%; height: 300px; }
     
-    .footer {
-        padding: 3rem 1.5rem 1.5rem;
+    .post-row.reversed .post-image img,
+    .post-rowip.reversed .post-image img { box-shadow: 20px 20px 0px var(--img-shadow); }
+}
+
+/* ======================================================
+LOGIN PAGE RESPONSIVE
+========================================================= */
+@media (max-width: 500px) {
+    .glass-container {
+        width: 90%;
+        padding: 1.5rem;
+        margin-top: 130px; 
     }
+    .input-row {
+        flex-direction: column;
+        gap: 0;
+    }
+    .user-form h2 { font-size: 24px; }
+}

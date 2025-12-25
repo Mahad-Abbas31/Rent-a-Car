@@ -1,3 +1,5 @@
+/* about-style.css */
+
 /* ___Reuse Variables & Theme Connection___ */
 :root {
     /* Define defaults for About Page (Dark Mode) */
@@ -11,7 +13,6 @@
 }
 
 /* ___LIGHT MODE OVERRIDES___ */
-/* This connects to the JS toggle class 'light-mode' */
 body.light-mode {
     --page-bg: #f4f6f8;       /* Light Gray Page */
     --card-bg: #ffffff;       /* White Cards */
@@ -27,14 +28,7 @@ body {
     transition: background-color 0.4s ease, color 0.4s ease;
 }
 
-/* ___Header Override___ */
-.header.about-header {
-    background: transparent !important;
-    min-height: auto !important;
-    height: auto !important;
-    position: relative;
-    z-index: 100;
-}
+/* Header override moved to navbar.css */
 
 /* ___Hero Section___ */
 .about-hero {
@@ -67,7 +61,6 @@ body {
 
 .hero-text h1 span {
     color: var(--secondary-color);
-    /* Removed text-stroke to look cleaner in light mode */
 }
 
 .hero-text p {
@@ -249,85 +242,10 @@ body {
 .socials { margin-top: 15px; }
 
 .socials a {
-    color: var(--text-muted);
+    color: var(--text-muted2);
     margin: 0 5px;
     font-size: 18px;
     transition: 0.3s;
 }
 
 .socials a:hover { color: var(--primary-color); }
-
-/* ___Hamburger Icon (Hidden on Desktop)___ */
-.hamburger {
-    display: none;
-    cursor: pointer;
-    font-size: 24px;
-    color: var(--primary-color);
-    z-index: 1001;
-}
-
-
-/* ___RESPONSIVE MEDIA QUERIES___ */
-@media (max-width: 992px) {
-    /* Navbar Layout */
-    .header .navbar {
-        justify-content: space-between;
-        padding: 1rem 2rem;
-    }
-
-    /* Show Hamburger */
-    .hamburger { display: block; }
-
-    /* Hide Menu Logic */
-    .header .navbar .menu {
-        position: absolute;
-        top: 100%;
-        left: 0;
-        width: 100%;
-        
-        /* Uses dynamic background */
-        background: var(--page-bg); 
-        
-        backdrop-filter: blur(20px);
-        flex-direction: column;
-        align-items: center;
-        padding: 2rem 0;
-        opacity: 0;
-        transform: translateY(-20px);
-        pointer-events: none;
-        transition: all 0.4s ease;
-        z-index: 999;
-        border-bottom: 1px solid var(--border-color);
-    }
-
-    /* Active Menu */
-    .header .navbar .menu.open {
-        opacity: 1;
-        transform: translateY(0);
-        pointer-events: auto;
-    }
-
-    .header .navbar .menu ul {
-        flex-direction: column;
-        text-align: center;
-    }
-
-    .header .navbar .menu ul li {
-        margin: 15px 0;
-        display: block;
-    }
-
-    /* Hide Social Icons in Navbar on mobile */
-    .header .navbar .socialmedia { display: none; }
-}
-
-@media (max-width: 900px) {
-    .about-hero {
-        flex-direction: column-reverse;
-        text-align: center;
-    }
-    .hero-text p { margin: 0 auto; }
-    .story-container { flex-direction: column; }
-    .hero-image img { height: 300px; }
-    .stats-bar { flex-direction: column; gap: 2rem; }
-}

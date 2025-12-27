@@ -1,0 +1,251 @@
+/* about-style.css */
+
+/* ___Reuse Variables & Theme Connection___ */
+:root {
+    /* Define defaults for About Page (Dark Mode) */
+    --page-bg: #07081d;       
+    --card-bg: #f58888;
+    --hero-shadow: rgba(255,255,255,0.05); /* Shadow for images */
+    --stat-bar-bg: rgba(255,255,255,0.03);
+    
+    /* Inherit global theme colors from theme.css */
+    --text-main: var(--primary-color); 
+}
+
+/* ___LIGHT MODE OVERRIDES___ */
+body.light-mode {
+    --page-bg: #f4f6f8;       /* Light Gray Page */
+    --card-bg: #ffffff;       /* White Cards */
+    --hero-shadow: rgba(0,0,0,0.1); /* Darker shadow for light mode */
+    --stat-bar-bg: rgba(0,0,0,0.05);
+}
+
+/* ___Base Styling___ */
+body {
+    background-color: var(--page-bg); /* Uses dynamic variable */
+    color: var(--primary-color);      /* From theme.css */
+    overflow-x: hidden;
+    transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+/* Header override moved to navbar.css */
+
+/* ___Hero Section___ */
+.about-hero {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2rem 5%;
+    min-height: 60vh;
+    gap: 3rem;
+}
+
+.hero-text {
+    flex: 1;
+}
+
+.hero-text h5 {
+    color: var(--tertiary-color);
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin-bottom: 10px;
+}
+
+.hero-text h1 {
+    font-size: clamp(40px, 5vw, 80px);
+    line-height: 1;
+    text-transform: uppercase;
+    font-weight: 800;
+    margin-bottom: 20px;
+}
+
+.hero-text h1 span {
+    color: var(--secondary-color);
+}
+
+.hero-text p {
+    font-size: 16px;
+    line-height: 1.6;
+    opacity: 0.8;
+    max-width: 500px;
+    color: var(--text-muted); /* Theme variable */
+}
+
+.hero-image {
+    flex: 1;
+    position: relative;
+}
+
+.hero-image img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 20px;
+    box-shadow: 20px 20px 0px var(--hero-shadow); /* Dynamic Shadow */
+}
+
+/* ___Stats Bar___ */
+.stats-bar {
+    display: flex;
+    justify-content: space-around;
+    background: var(--stat-bar-bg); /* Dynamic */
+    padding: 3rem 5%;
+    margin-bottom: 5rem;
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.stat-box { text-align: center; }
+
+.counter {
+    font-size: 50px;
+    font-weight: 900;
+    color: var(--secondary-color);
+}
+
+.stat-box p {
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 14px;
+    opacity: 0.7;
+    color: var(--primary-color);
+}
+
+/* ___Story Section___ */
+.our-story {
+    padding: 0 5%;
+    margin-bottom: 8rem;
+}
+
+.story-container {
+    display: flex;
+    align-items: center;
+    gap: 4rem;
+}
+
+.story-left { flex: 1; }
+
+.story-left img {
+    width: 100%;
+    border-radius: 20px;
+    filter: grayscale(30%);
+    transition: 0.5s;
+}
+
+.story-left:hover img { filter: grayscale(0%); }
+
+.story-right { flex: 1; }
+
+.story-right h3 {
+    color: var(--tertiary-color);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+}
+
+.story-right h2 {
+    font-size: 40px;
+    margin-bottom: 20px;
+    line-height: 1.2;
+    color: var(--primary-color);
+}
+
+.story-right h2 span { color: var(--secondary-color); }
+
+.story-right p {
+    margin-bottom: 20px;
+    opacity: 0.8;
+    line-height: 1.6;
+    color: var(--text-muted);
+}
+
+.features-list span {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
+.features-list i {
+    color: var(--secondary-color);
+    margin-right: 10px;
+}
+
+/* ___Team Section___ */
+.team-section {
+    padding: 0 5%;
+    margin-bottom: 5rem;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.section-title h2 {
+    font-size: 40px;
+    text-transform: uppercase;
+    color: var(--primary-color);
+}
+
+.section-title span { color: var(--secondary-color); }
+
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.team-card {
+    background: var(--card-bg); /* Dynamic */
+    border-radius: 15px;
+    overflow: hidden;
+    text-align: center;
+    border: 1px solid var(--border-color);
+    transition: 0.3s;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.team-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--tertiary-color);
+}
+
+.member-img {
+    height: 300px;
+    overflow: hidden;
+}
+
+.member-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: 0.5s;
+}
+
+.team-card:hover .member-img img { transform: scale(1.1); }
+
+.member-info { padding: 20px; }
+
+.member-info h3 {
+    margin-bottom: 5px;
+    color: var(--primary-color);
+}
+
+.member-info span {
+    color: var(--secondary-color);
+    font-size: 13px;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+.socials { margin-top: 15px; }
+
+.socials a {
+    color: var(--text-muted2);
+    margin: 0 5px;
+    font-size: 18px;
+    transition: 0.3s;
+}
+
+.socials a:hover { color: var(--primary-color); }

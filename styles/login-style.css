@@ -1,0 +1,251 @@
+/* login-style.css */
+
+/* ___Reuse Variables & Theme Connection___ */
+:root {
+    --glass-bg: rgba(255, 255, 255, 0.05);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --input-bg: rgba(0, 0, 0, 0.2);
+    --input-focus-bg: rgba(0, 0, 0, 0.4);
+    --video-overlay: rgba(10, 10, 30, 0.6);
+    --dropdown-bg: #26284e;
+    
+    --text-main: var(--primary-color); 
+    --text-muted: rgba(255, 255, 255, 0.5);
+}
+
+/* ___LIGHT MODE OVERRIDES___ */
+body.light-mode {
+    --glass-bg: rgba(255, 255, 255, 0.85); 
+    --glass-border: rgba(255, 255, 255, 0.8);
+    --input-bg: rgba(0, 0, 0, 0.05);
+    --input-focus-bg: rgba(0, 0, 0, 0.1);
+    --video-overlay: rgba(255, 255, 255, 0.3);
+    --dropdown-bg: #ffffff;
+    --text-muted: #666;
+}
+
+/* ___Body___*/
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Montserrat", sans-serif;
+    color: var(--primary-color);
+    min-height: 100vh;
+    
+    /* ___CENTERING FIX___ */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centers form vertically since footer is gone */
+    align-items: center;
+    
+    overflow-x: hidden; 
+    overflow-y: auto; 
+    transition: color 0.4s ease;
+}
+
+/* Header override moved to navbar.css */
+
+/* ___VIDEO BACKGROUND___ */
+.video-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; 
+}
+
+.video-bg video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--video-overlay);
+    transition: background 0.4s ease;
+}
+
+/* ___GLASS CONTAINER (FORM)___ */
+.glass-container {
+    background: var(--glass-bg);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    width: 450px;
+    padding: 2.5rem;
+    border-radius: 20px;
+    border: 1px solid var(--glass-border);
+    box-shadow: 0 25px 50px rgba(0,0,0,0.2);
+    z-index: 10; 
+    
+    /* ___MARGIN FIX FOR MOBILE___ */
+    margin-top: 100px; 
+    margin-bottom: 20px;
+    
+    transition: background 0.4s ease, border-color 0.4s ease;
+    
+    /*___ Scroll Form ___*/
+    max-height: 80vh;
+    overflow-y: auto;
+    scrollbar-width: none; 
+}
+
+/*___ Scroller hidden ___*/
+.glass-container::-webkit-scrollbar { 
+    display: none; 
+}
+
+/* ___Toggle Buttons___ */
+.form-toggle {
+    display: flex;
+    margin-bottom: 25px;
+    border-bottom: 1px solid var(--text-muted);
+}
+
+.form-toggle button {
+    flex: 1;
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    font-size: 16px;
+    padding-bottom: 10px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.form-toggle button.active {
+    color: var(--secondary-color);
+    border-bottom: 2px solid var(--secondary-color);
+}
+
+/* ___Input Styling___ */
+.user-form h2 {
+    font-size: 30px;
+    margin-bottom: 5px;
+    text-align: center;
+    color: var(--primary-color);
+}
+
+.user-form h2 span {
+    color: var(--secondary-color); 
+}
+
+.user-form p {
+    font-size: 13px;
+    margin-bottom: 20px;
+    opacity: 0.8;
+    text-align: center;
+    color: var(--primary-color);
+}
+
+.input-box {
+    position: relative;
+    margin-bottom: 15px;
+}
+
+.input-box i {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--secondary-color);
+    font-size: 14px;
+}
+
+.input-box input, select {
+    width: 100%;
+    background: var(--input-bg);
+    border: 1px solid var(--glass-border);
+    padding: 12px 12px 12px 40px;
+    border-radius: 50px;
+    color: var(--primary-color);
+    outline: none;
+    transition: 0.3s;
+    font-size: 14px;
+}
+
+.input-box input:focus, select:focus {
+    border-color: var(--secondary-color);
+    background: var(--input-focus-bg);
+}
+
+.input-row {
+    display: flex;
+    gap: 10px;
+}
+.input-row .input-box {
+    flex: 1;
+}
+
+select option {
+    background: var(--dropdown-bg);
+    color: var(--primary-color);
+}
+
+.options {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    margin-bottom: 20px;
+    color: var(--primary-color);
+    opacity: 0.8;
+    padding: 0 10px;
+}
+
+.options a {
+    color: var(--primary-color);
+    text-decoration: underline;
+}
+
+.submit-btn {
+    width: 100%;
+    background: linear-gradient(90deg, var(--secondary-color), var(--tertiary-color));
+    border: none;
+    padding: 12px;
+    border-radius: 50px;
+    color: white;
+    font-weight: 700;
+    cursor: pointer;
+    font-size: 16px;
+    transition: 0.3s;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.submit-btn:hover {
+    transform: scale(1.02);
+    box-shadow: 0 5px 15px rgba(212, 50, 66, 0.4);
+}
+
+.social-login {
+    text-align: center;
+}
+.social-login p {
+    margin-bottom: 10px;
+    color: var(--primary-color);
+}
+
+.social-icons a {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 35px;
+    height: 35px;
+    border: 1px solid var(--glass-border);
+    border-radius: 50%;
+    color: var(--primary-color);
+    margin: 0 5px;
+    transition: 0.3s;
+}
+
+.social-icons a:hover {
+    background: var(--secondary-color);
+    color: white;
+    border-color: var(--secondary-color);
+}
